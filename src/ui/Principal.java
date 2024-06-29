@@ -12,6 +12,7 @@ import java.awt.Color;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
@@ -22,19 +23,6 @@ public class Principal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Principal frame = new Principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	
 	public Principal() {
@@ -57,8 +45,31 @@ setUndecorated(true);
 		menuBar.add(btnNewButton);
 		
 		textField = new JTextField();
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setSize(30, 100);
 		menuBar.add(textField);
 		textField.setColumns(10);
+	
+		JMenu mnNewMenu_3 = new JMenu("Cuenta");
+		menuBar.add(mnNewMenu_3);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Iniciar Sesión");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					IniciarSesion dialog = new IniciarSesion();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		mnNewMenu_3.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Registrar");
+		mnNewMenu_3.add(mntmNewMenuItem_1);
 		
 		JMenu mnNewMenu = new JMenu("Servicios");
 		menuBar.add(mnNewMenu);
@@ -68,9 +79,6 @@ setUndecorated(true);
 		
 		JMenu mnNewMenu_2 = new JMenu("Cesta");
 		menuBar.add(mnNewMenu_2);
-		
-		JMenu mnNewMenu_3 = new JMenu("AcercaProyecto");
-		menuBar.add(mnNewMenu_3);
 		
 		JButton btnNewButton_1 = new JButton("X");
 		btnNewButton_1.addActionListener(new ActionListener() {
