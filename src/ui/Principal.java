@@ -30,7 +30,7 @@ public class Principal extends JFrame {
 		setBounds(100, 100, 1122, 519);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 900, 500));
-setUndecorated(true);
+ //setUndecorated(true);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setBounds(0, 0, 900, 500);
@@ -50,11 +50,11 @@ setUndecorated(true);
 		menuBar.add(textField);
 		textField.setColumns(10);
 	
-		JMenu mnNewMenu_3 = new JMenu("Cuenta");
-		menuBar.add(mnNewMenu_3);
+		JMenu menuCuenta = new JMenu("Cuenta");
+		menuBar.add(menuCuenta);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Iniciar Sesión");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
+		JMenuItem inicioSesio = new JMenuItem("Iniciar Sesión");
+		inicioSesio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
@@ -66,19 +66,22 @@ setUndecorated(true);
 				}
 			}
 		});
-		mnNewMenu_3.add(mntmNewMenuItem);
+		menuCuenta.add(inicioSesio);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Registrar");
-		mnNewMenu_3.add(mntmNewMenuItem_1);
+		JMenuItem registro = new JMenuItem("Registrar");
+		menuCuenta.add(registro);
 		
-		JMenu mnNewMenu = new JMenu("Servicios");
-		menuBar.add(mnNewMenu);
+		JMenu menuServicios = new JMenu("Servicios");
+		menuBar.add(menuServicios);
 		
-		JMenu mnNewMenu_1 = new JMenu("Opciones");
-		menuBar.add(mnNewMenu_1);
+		JMenuItem personalizarDisco = new JMenuItem("Personalizar Disco");
+		menuServicios.add(personalizarDisco);
 		
-		JMenu mnNewMenu_2 = new JMenu("Cesta");
-		menuBar.add(mnNewMenu_2);
+		JMenu menuCesta = new JMenu("Cesta");
+		menuBar.add(menuCesta);
+		
+		JMenuItem pago = new JMenuItem("Pago");
+		menuCesta.add(pago);
 		
 		JButton btnNewButton_1 = new JButton("X");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -86,6 +89,68 @@ setUndecorated(true);
 				dispose();
 			}
 		});
+		
+		JMenu menuOpciones = new JMenu("Opciones");
+		menuBar.add(menuOpciones);
+		
+		JMenu mnNewMenu_4 = new JMenu("Agregar");
+		menuOpciones.add(mnNewMenu_4);
+		
+		JMenuItem agregarDisco = new JMenuItem("Disco");
+		mnNewMenu_4.add(agregarDisco);
+		
+		JMenuItem agregarProM = new JMenuItem("Producto Músical");
+		mnNewMenu_4.add(agregarProM);
+		
+		JMenuItem agregarTrabajador = new JMenuItem("Trabajador");
+		agregarTrabajador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					agregarTrabajador dialog = new agregarTrabajador();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+		});
+		mnNewMenu_4.add(agregarTrabajador);
+		
+		JMenu mnNewMenu_6 = new JMenu("Eliminar");
+		menuOpciones.add(mnNewMenu_6);
+		
+		JMenuItem eliminarDisco = new JMenuItem("Disco");
+		mnNewMenu_6.add(eliminarDisco);
+		
+		JMenuItem eliminarProducMus = new JMenuItem("Producto Músical");
+		mnNewMenu_6.add(eliminarProducMus);
+		
+		JMenuItem eliminarTrabajador = new JMenuItem("Trabajador");
+		mnNewMenu_6.add(eliminarTrabajador);
+		
+		JMenu mnNewMenu_7 = new JMenu("Modificar");
+		menuOpciones.add(mnNewMenu_7);
+		
+		JMenuItem modificarDisco = new JMenuItem("Disco");
+		mnNewMenu_7.add(modificarDisco);
+		
+		JMenuItem modificarProducMusi = new JMenuItem("Producto Músical");
+		mnNewMenu_7.add(modificarProducMusi);
+		
+		JMenuItem modificarTrabajador = new JMenuItem("Trabajador");
+		mnNewMenu_7.add(modificarTrabajador);
+		
+		JMenu mnNewMenu_5 = new JMenu("Registros");
+		menuOpciones.add(mnNewMenu_5);
+		
+		JMenuItem registroDisco = new JMenuItem("Disco");
+		mnNewMenu_5.add(registroDisco);
+		
+		JMenuItem registroProMusic = new JMenuItem("Producto Músical");
+		mnNewMenu_5.add(registroProMusic);
+		
+		JMenuItem registroTrabajador = new JMenuItem("Trabajadores");
+		mnNewMenu_5.add(registroTrabajador);
 		menuBar.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
