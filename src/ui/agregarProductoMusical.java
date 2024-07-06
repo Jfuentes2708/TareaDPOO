@@ -58,7 +58,7 @@ public class agregarProductoMusical extends JDialog {
 		}
 		{
 			JPanel datosEstandar = new JPanel();
-			datosEstandar.setBounds(59, 42, 448, 284);
+			datosEstandar.setBounds(51, 34, 448, 284);
 			contentPanel.add(datosEstandar);
 			datosEstandar.setLayout(null);
 			datosEstandar.setBorder(new TitledBorder(null, "Datos Est\u00E1ndar ", TitledBorder.LEADING, TitledBorder.TOP, null, null));

@@ -69,6 +69,17 @@ public class Principal extends JFrame {
 		menuCuenta.add(inicioSesio);
 		
 		JMenuItem registro = new JMenuItem("Registrar");
+		registro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Registro dialog = new Registro();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		menuCuenta.add(registro);
 		
 		JMenu menuServicios = new JMenu("Servicios");
