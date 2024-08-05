@@ -34,9 +34,7 @@ public class IniciarSesion extends JDialog {
 	private JPasswordField txtPassword;
 	private JTextField txtUsario;
 	
-	/**
-	 * Launch the application.
-	 */
+	
 
 	public IniciarSesion() {
 		setBounds(0,0, 600, 500);
@@ -44,8 +42,9 @@ public class IniciarSesion extends JDialog {
 		contentPaneInicio.setBorder(new EmptyBorder(5, 5, 600, 500));
 		setContentPane(contentPaneInicio);
 		contentPaneInicio.setLayout(null);
-		setLocationByPlatform(isCursorSet());
-
+		//setLocationByPlatform(isCursorSet());
+		setLocationRelativeTo(null);
+		
 		JPanel fondoIzquie = new JPanel();
 		fondoIzquie.setBackground(new Color(222, 222, 222));
 		fondoIzquie.setBounds(0, 0, 300, 500);

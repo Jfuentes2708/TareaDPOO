@@ -25,6 +25,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import componentesVisuales.BotonAnimacion;
+import javax.swing.SwingConstants;
 
 public class agregarTrabajador extends JDialog {
 
@@ -32,6 +33,7 @@ public class agregarTrabajador extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField nombreTXT;
 	private JTextField ciTXT;
+	private JTextField apellidoTXT;
 	
 	
 	public agregarTrabajador() {
@@ -41,15 +43,27 @@ public class agregarTrabajador extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
-		setLocationByPlatform(isCursorSet());
+		//setLocationByPlatform(isCursorSet());
 		setUndecorated(true);
+		setLocationRelativeTo(null);
+		
+		apellidoTXT = new JTextField();
+		apellidoTXT.setColumns(10);
+		apellidoTXT.setBounds(256, 97, 140, 19);
+		contentPanel.add(apellidoTXT);
+		
+		JLabel label_apellidos = new JLabel(" Apellidos");
+		label_apellidos.setForeground(new Color(8, 6, 7));
+		label_apellidos.setFont(new Font("Roboto Medium", Font.PLAIN, 14));
+		label_apellidos.setBounds(135, 99, 82, 13);
+		contentPanel.add(label_apellidos);
 		
 		BotonAnimacion borrarBT = new BotonAnimacion();
 		borrarBT.setText("Borrar");
 		
 		borrarBT.setBounds(315, 447, 97, 23);
 		contentPanel.add(borrarBT);
-		//contentPanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{ btnAgregar, borrarBT}));
+		
 		
 		BotonAnimacion btnAgregar = new BotonAnimacion();
 		btnAgregar.setText("Aceptar");
@@ -78,58 +92,58 @@ public class agregarTrabajador extends JDialog {
 		contentPanel.add(lblNewLabel_6);
 
 		JSpinner salarioBas = new JSpinner();
-		salarioBas.setBounds(258, 289, 138, 19);
+		salarioBas.setBounds(256, 323, 138, 19);
 		
 		contentPanel.add(salarioBas);
 
-		JLabel lblNewLabel_1 = new JLabel("Nombre y Apellidos");
+		JLabel lblNewLabel_1 = new JLabel("Nombre ");
 		lblNewLabel_1.setForeground(new Color(8, 6, 7));
 		lblNewLabel_1.setFont(new Font("Roboto Medium", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(60, 63, 143, 13);
+		lblNewLabel_1.setBounds(135, 60, 82, 13);
 		contentPanel.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("No Identidad");
 		lblNewLabel_2.setForeground(new Color(8, 6, 7));
 		lblNewLabel_2.setFont(new Font("Roboto Medium", Font.PLAIN, 14));
-		lblNewLabel_2.setBounds(60, 124, 100, 13);
+		lblNewLabel_2.setBounds(124, 143, 93, 13);
 		contentPanel.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Nivel Escolar");
 		lblNewLabel_3.setForeground(new Color(8, 6, 7));
 		lblNewLabel_3.setFont(new Font("Roboto Medium", Font.PLAIN, 14));
-		lblNewLabel_3.setBounds(66, 172, 108, 13);
+		lblNewLabel_3.setBounds(124, 200, 93, 13);
 		contentPanel.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("Cargo");
 		lblNewLabel_4.setForeground(new Color(8, 6, 7));
 		lblNewLabel_4.setFont(new Font("Roboto Medium", Font.PLAIN, 14));
-		lblNewLabel_4.setBounds(76, 221, 45, 13);
+		lblNewLabel_4.setBounds(156, 267, 45, 13);
 		contentPanel.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_5 = new JLabel("Salario Básico");
 		lblNewLabel_5.setForeground(new Color(8, 6, 7));
 		lblNewLabel_5.setFont(new Font("Roboto Medium", Font.PLAIN, 14));
-		lblNewLabel_5.setBounds(66, 291, 72, 13);
+		lblNewLabel_5.setBounds(123, 325, 94, 13);
 		contentPanel.add(lblNewLabel_5);
 
 		nombreTXT = new JTextField();
-		nombreTXT.setBounds(256, 61, 140, 19);
+		nombreTXT.setBounds(256, 58, 140, 19);
 		contentPanel.add(nombreTXT);
 		nombreTXT.setColumns(10);
 
 		ciTXT = new JTextField();
-		ciTXT.setBounds(256, 122, 140, 19);
+		ciTXT.setBounds(256, 141, 140, 19);
 		contentPanel.add(ciTXT);
 		ciTXT.setColumns(10);
 
-		JComboBox nivelBox = new JComboBox();
-		nivelBox.setBounds(256, 169, 142, 21);
+		JComboBox<String> nivelBox = new JComboBox();
+		nivelBox.setBounds(256, 197, 142, 21);
 		contentPanel.add(nivelBox);
 		nivelBox.setModel(new DefaultComboBoxModel<String>(new String[] {
 				"Tecnico Medio", "Preuniversitario","Universitario" }));
 
 		JComboBox<String> cargoBOX = new JComboBox();
-		cargoBOX.setBounds(254, 218, 140, 21);
+		cargoBOX.setBounds(256, 264, 140, 21);
 		contentPanel.add(cargoBOX);
 		cargoBOX.setModel(new DefaultComboBoxModel<String>(new String[] {
 				"Dependiente" , "Gerente",
@@ -144,7 +158,7 @@ public class agregarTrabajador extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				nombreTXT.setText("");
 				ciTXT.setText("");
-				
+				apellidoTXT.setText("");
 
 			}
 		});

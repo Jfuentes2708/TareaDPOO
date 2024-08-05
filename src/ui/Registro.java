@@ -35,25 +35,27 @@ public class Registro extends JDialog {
 	private final JPanel contentPaneInicio = new JPanel();
 	private JPasswordField txtPassword;
 	private JTextField txtUsario;
-	private JTextField txtNombreUsuario;
+	private JTextField usuarioTXT;
 	
-	/**
-	 * Launch the application.
-	 */
-
+	
 	public Registro() {
 		setBounds(0,0, 600, 500);
 		setUndecorated(true);
 		contentPaneInicio.setBorder(new EmptyBorder(5, 5, 600, 500));
 		setContentPane(contentPaneInicio);
 		contentPaneInicio.setLayout(null);
-		setLocationByPlatform(isCursorSet());
-
+		//setLocationByPlatform(isCursorSet());
+		setLocationRelativeTo(null);
+		
 		JPanel fondoIzquie = new JPanel();
 		fondoIzquie.setBackground(new Color(222, 222, 222));
 		fondoIzquie.setBounds(0, 0, 300, 500);
 		contentPaneInicio.add(fondoIzquie);
 		fondoIzquie.setLayout(null);
+		
+		JSeparator separator_1_1 = new JSeparator();
+		separator_1_1.setBounds(22, 247, 268, 18);
+		fondoIzquie.add(separator_1_1);
 
 		JPanel panel_1 = new JPanel();
 
@@ -105,7 +107,7 @@ public class Registro extends JDialog {
 		txtPassword.setBackground(null);
 
 		txtUsario = new JTextField();
-		txtUsario.setBounds(22, 259, 268, 13);
+		txtUsario.setBounds(22, 134, 268, 13);
 		fondoIzquie.add(txtUsario);
 		txtUsario.setColumns(10);
 		txtUsario.setBorder(null);
@@ -131,10 +133,12 @@ public class Registro extends JDialog {
 		lblNewLabel_3.setBounds(22, 195, 151, 13);
 		fondoIzquie.add(lblNewLabel_3);
 		
-		txtNombreUsuario = new JTextField();
-		txtNombreUsuario.setBounds(27, 230, 249, 19);
-		fondoIzquie.add(txtNombreUsuario);
-		txtNombreUsuario.setColumns(10);
+		usuarioTXT = new JTextField();
+		usuarioTXT.setColumns(10);
+		usuarioTXT.setBorder(null);
+		usuarioTXT.setBackground((Color) null);
+		usuarioTXT.setBounds(22, 234, 268, 13);
+		fondoIzquie.add(usuarioTXT);
 
 		JLabel labelFondo = new JLabel();
 		labelFondo.setIcon(new ImageIcon("C:\\Users\\alejandro\\Documents\\GitHub\\TareaDPOO\\src\\imagenes\\FondoInicio.png"));

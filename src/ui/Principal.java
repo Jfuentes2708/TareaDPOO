@@ -30,10 +30,11 @@ public class Principal extends JFrame {
 		setBounds(100, 100, 1122, 519);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 900, 500));
- //setUndecorated(true);
+ setUndecorated(true);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setBounds(0, 0, 900, 500);
+		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setForeground(new Color(255, 255, 255));
@@ -108,9 +109,31 @@ public class Principal extends JFrame {
 		menuOpciones.add(mnNewMenu_4);
 		
 		JMenuItem agregarDisco = new JMenuItem("Disco");
+		agregarDisco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					agregarDisco dialog = new agregarDisco();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_4.add(agregarDisco);
 		
 		JMenuItem agregarProM = new JMenuItem("Producto Músical");
+		agregarProM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					agregarProductoMusical dialog = new agregarProductoMusical();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_4.add(agregarProM);
 		
 		JMenuItem agregarTrabajador = new JMenuItem("Trabajador");
@@ -128,6 +151,7 @@ public class Principal extends JFrame {
 		mnNewMenu_4.add(agregarTrabajador);
 		
 		JMenu mnNewMenu_6 = new JMenu("Eliminar");
+		mnNewMenu_6.setEnabled(false);
 		menuOpciones.add(mnNewMenu_6);
 		
 		JMenuItem eliminarDisco = new JMenuItem("Disco");
@@ -140,6 +164,7 @@ public class Principal extends JFrame {
 		mnNewMenu_6.add(eliminarTrabajador);
 		
 		JMenu mnNewMenu_7 = new JMenu("Modificar");
+		mnNewMenu_7.setEnabled(false);
 		menuOpciones.add(mnNewMenu_7);
 		
 		JMenuItem modificarDisco = new JMenuItem("Disco");
