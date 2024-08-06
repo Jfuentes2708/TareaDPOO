@@ -7,7 +7,7 @@ public class ProductoMusical {
 	protected float precio;
 	protected String titulo;
 	protected String genero;
-	protected String duracion;
+	protected float duracion;
 	protected String interprete;
 	protected String tamaFichero;
 	protected ArrayList<String> colaboradores;
@@ -44,12 +44,12 @@ public class ProductoMusical {
 	}
 	
 	
-	public String getDuracion() {
+	public float getDuracion() {
 		return duracion;
 	}
 	
 	
-	public void setDuracion(String duracion) {
+	public void setDuracion(float duracion) {
 		this.duracion = duracion;
 	}
 	
@@ -80,7 +80,7 @@ public class ProductoMusical {
 
 
 	public ProductoMusical(float precio, String titulo, String genero,
-			String duracion, String interprete, String tamaFichero) {
+			float duracion, String interprete, String tamaFichero) {
 		setPrecio(precio);
 		setTitulo(titulo);
 		setGenero(genero);

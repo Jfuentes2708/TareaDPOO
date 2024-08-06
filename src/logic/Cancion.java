@@ -13,11 +13,12 @@ public class Cancion extends ProductoMusical  {
 
 
 
-	public Cancion(float precio, String titulo, String genero, String duracion,
-			String interprete, String tamaFichero, String album) {
+	public Cancion( String titulo, String genero,String interprete, String tamaFichero, String album, float duracion,float precio) {
 		
 		super(precio, titulo, genero, duracion, interprete, tamaFichero);
 		setAlbum(album);
+		
+		
 	}
 	
 	

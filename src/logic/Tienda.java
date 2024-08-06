@@ -37,6 +37,12 @@ public class Tienda {
 		setTelefono(telefono);
 	}
 	
+	public boolean agregarTrabajador(Trabajador a) {
+		boolean agregado=false;
+		
+		
+		return agregado;
+	}
 	
 	
 	

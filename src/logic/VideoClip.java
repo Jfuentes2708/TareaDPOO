@@ -14,7 +14,7 @@ public class VideoClip extends ProductoMusical {
 	
 	
 	public VideoClip(float precio, String titulo, String genero,
-			String duracion, String interprete, String tamaFichero,String resolucion) {
+			float duracion, String interprete, String tamaFichero,String resolucion) {
 		
 		super(precio, titulo, genero, duracion, interprete, tamaFichero);
 		this.resolucion = resolucion;
