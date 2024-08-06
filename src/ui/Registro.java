@@ -34,7 +34,7 @@ public class Registro extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPaneInicio = new JPanel();
 	private JPasswordField txtPassword;
-	private JTextField txtUsario;
+	private JTextField nombreTXT;
 	private JTextField usuarioTXT;
 	
 	
@@ -106,12 +106,12 @@ public class Registro extends JDialog {
 		txtPassword.setBorder(null);
 		txtPassword.setBackground(null);
 
-		txtUsario = new JTextField();
-		txtUsario.setBounds(22, 134, 268, 13);
-		fondoIzquie.add(txtUsario);
-		txtUsario.setColumns(10);
-		txtUsario.setBorder(null);
-		txtUsario.setBackground(null);
+		nombreTXT = new JTextField();
+		nombreTXT.setBounds(22, 134, 268, 13);
+		fondoIzquie.add(nombreTXT);
+		nombreTXT.setColumns(10);
+		nombreTXT.setBorder(null);
+		nombreTXT.setBackground(null);
 
 		JLabel lblNewLabel = new JLabel("Contraseña");
 		lblNewLabel.setFont(new Font("Roboto Medium", Font.PLAIN, 16));

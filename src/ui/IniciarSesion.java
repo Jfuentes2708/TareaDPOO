@@ -42,7 +42,7 @@ public class IniciarSesion extends JDialog {
 		contentPaneInicio.setBorder(new EmptyBorder(5, 5, 600, 500));
 		setContentPane(contentPaneInicio);
 		contentPaneInicio.setLayout(null);
-		//setLocationByPlatform(isCursorSet());
+		// setLocationByPlatform(isCursorSet());
 		setLocationRelativeTo(null);
 		
 		JPanel fondoIzquie = new JPanel();
