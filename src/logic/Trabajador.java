@@ -42,7 +42,7 @@ public class Trabajador {
 	}
 	
 	
-	public void setNumeroTrabajador(int numeroTrabajador) {
+	public void setNumeroTrabajador(String numeroTrabajador) {
 		this.numeroTrabajador = numeroTrabajador;
 	}
 	
