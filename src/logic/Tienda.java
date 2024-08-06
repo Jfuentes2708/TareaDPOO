@@ -86,7 +86,7 @@ public class Tienda {
 		for (int i = 0; i < trabajadores.size() && !verificado; i++) {
 			if(trabajadores.get(i).getNumeroTrabajador().equalsIgnoreCase(numeroTrabajo));
 			traba=trabajadores.get(i);
-			 verificado=true;
+			verificado=true;
 		}
 		return traba;
 	}
@@ -151,43 +151,43 @@ public class Tienda {
 		}
 		return dic;
 	}
-	
-	
-//Agregar 
-public boolean agregarTrabajador(Trabajador a) {//TRABAJADOR
-	boolean agregado=false;
-	if(verificarTrabajador(a.getNumeroTrabajador())==null) {
-		trabajadores.add(a);
-		agregado=true;
-	}		
-	return agregado;
-}
 
-public boolean agregarDisco(Disco d) {//DISCO
-	boolean agregado=false;
-	if(buscarDisco(d.getNombreDisco())==null) {
-		discos.add(d);
-		agregado=true;
-	}		
-	return agregado;
-}
 
-public boolean agregarCancion(Cancion can) {//CANCION
-	boolean agregado=false;
-	if(buscarCancion(can.getTitulo())==null) {
-		productos.add(can);
-		agregado=true;
-	}		
-	return agregado;
-}
+	//Agregar 
+	public boolean agregarTrabajador(Trabajador a) {//TRABAJADOR
+		boolean agregado=false;
+		if(verificarTrabajador(a.getNumeroTrabajador())==null) {
+			trabajadores.add(a);
+			agregado=true;
+		}		
+		return agregado;
+	}
 
-public boolean agregarVideoClip(VideoClip vid) {//VIDEO CLIP
-	boolean agregado=false;
-	if(buscarVideoClip(vid.getTitulo())==null) {
-		productos.add(vid);
-		agregado=true;
-	}		
-	return agregado;
-}
+	public boolean agregarDisco(Disco d) {//DISCO
+		boolean agregado=false;
+		if(buscarDisco(d.getNombreDisco())==null) {
+			discos.add(d);
+			agregado=true;
+		}		
+		return agregado;
+	}
+
+	public boolean agregarCancion(Cancion can) {//CANCION
+		boolean agregado=false;
+		if(buscarCancion(can.getTitulo())==null) {
+			productos.add(can);
+			agregado=true;
+		}		
+		return agregado;
+	}
+
+	public boolean agregarVideoClip(VideoClip vid) {//VIDEO CLIP
+		boolean agregado=false;
+		if(buscarVideoClip(vid.getTitulo())==null) {
+			productos.add(vid);
+			agregado=true;
+		}		
+		return agregado;
+	}
 
 }

@@ -15,11 +15,11 @@ public class Gerente extends Trabajador {
 
 	
 	
-	public Gerente(String nombre, String numeroId, String numeroTrabajador,
+	public Gerente(String nombre,String apellidos, String numeroId, String numeroTrabajador,
 			float salarioBasico, String nivelEscolar, String cargo,
 			Date fechaOcupaCargo) {
 		
-		super(nombre, numeroId, numeroTrabajador, salarioBasico, nivelEscolar,cargo);
+		super(nombre,apellidos, numeroId, numeroTrabajador, salarioBasico, nivelEscolar,cargo);
 		this.fechaOcupaCargo = fechaOcupaCargo;
 	}
 	

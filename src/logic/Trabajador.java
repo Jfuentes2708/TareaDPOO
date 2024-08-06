@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Trabajador {
 	protected String nombre;
-	protected ArrayList<String> apellidos;
+	protected String apellidos;
 	protected String numeroId;
 	protected String numeroTrabajador;
 	protected float salarioBasico;
@@ -22,10 +22,12 @@ public class Trabajador {
 	}
 	
 	
-	public ArrayList<String> getApellidos() {
+	public String getApellidos() {
 		return apellidos;
 	}
-
+	public void setApellido(String apellidos) {
+		this.apellidos = apellidos;
+	}
 	
 	public String getNumeroId() {
 		return numeroId;
@@ -79,7 +81,7 @@ public class Trabajador {
 
 	
 	
-	public Trabajador(String nombre, String numeroId, String numeroTrabajador,
+	public Trabajador(String nombre,String apellidos, String numeroId, String numeroTrabajador,
 			float salarioBasico, String nivelEscolar,
 			String cargo) {
 		
@@ -89,7 +91,7 @@ public class Trabajador {
 		setSalarioBasico(salarioBasico);
 		setNivelEscolar(nivelEscolar);
 		setCargo(cargo);
-		apellidos = new ArrayList<String>();
+		setApellido(apellidos);
 
 	}
 
