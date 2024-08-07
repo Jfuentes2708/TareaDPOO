@@ -2,6 +2,9 @@ package logic;
 
 import java.util.ArrayList;
 
+import logic.Cancion;
+import logic.VideoClip;
+
 public class Tienda {
 	private String nombre;
 	private String direccion;
@@ -189,5 +192,93 @@ public class Tienda {
 		}		
 		return agregado;
 	}
+
+	// Eliminar
+	public boolean eliminarTrabajador(Trabajador a) {//TRABAJADOR
+		boolean eliminado=false;
+		if(verificarTrabajador(a.getNumeroTrabajador())!=null) {
+			for(int i=0; i < trabajadores.size(); i++){
+				if((trabajadores.get(i)) == a){
+					trabajadores.remove(i);
+					eliminado=true;
+				}
+			}
+		}		
+		return eliminado;
+	}
+
+	public boolean eliminarDisco(Disco d) {//Disco
+		boolean eliminado=false;
+		if(buscarDisco(d.getNombreDisco())!=null){
+			for(int i=0; i < discos.size(); i++){
+				if((discos.get(i)) == d){
+					discos.remove(i);
+					eliminado=true;
+				}
+			}
+		}		
+		return eliminado;
+	}
+
+	public boolean eliminarCancion(Cancion can) {//Cancion
+		boolean eliminado=false;
+		if(buscarCancion(can.getTitulo())!=null){
+			for(int i=0; i < productos.size(); i++){
+				if((productos.get(i)) == can){
+					productos.remove(i);
+					eliminado=true;
+				}
+			}
+		}		
+		return eliminado;
+	}
+
+	public boolean eliminarVideoClip(VideoClip vid) {//Video Clip
+		boolean eliminado=false;
+		if(buscarVideoClip(vid.getTitulo())!=null){
+			for(int i=0; i < productos.size(); i++){
+				if((productos.get(i)) == vid){
+					productos.remove(i);
+					eliminado=true;
+				}
+			}
+		}		
+		return eliminado;
+	}
+
+	//Facilitar trabajo con canciones y videos por separado
+
+	public ArrayList <Cancion> ListaCanciones(){
+		ArrayList <Cancion> canciones = new ArrayList<Cancion>();
+		for(int i=0; i < productos.size(); i++){
+			if(productos.get(i) instanceof Cancion){
+				canciones.add((Cancion)productos.get(i));
+			}
+		}
+		return canciones;
+	}
+
+	public ArrayList<VideoClip> ListaVideos (){
+		ArrayList <VideoClip> videos = new ArrayList<VideoClip>();
+		for(int i=0; i < productos.size(); i++){
+			if(productos.get(i) instanceof VideoClip){
+				videos.add((VideoClip)productos.get(i));
+			}
+		}
+		return videos;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
