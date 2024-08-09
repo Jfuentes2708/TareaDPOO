@@ -26,6 +26,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import componentesVisuales.BotonAnimacion;
 import javax.swing.SwingConstants;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class agregarTrabajador extends JDialog {
 
@@ -34,8 +36,8 @@ public class agregarTrabajador extends JDialog {
 	private JTextField nombreTXT;
 	private JTextField ciTXT;
 	private JTextField apellidoTXT;
-	
-	
+
+
 	public agregarTrabajador() {
 		setBounds(100, 100, 600, 500);
 		getContentPane().setLayout(null);
@@ -46,27 +48,31 @@ public class agregarTrabajador extends JDialog {
 		//setLocationByPlatform(isCursorSet());
 		setUndecorated(true);
 		setLocationRelativeTo(null);
-		
+
 		apellidoTXT = new JTextField();
 		apellidoTXT.setColumns(10);
 		apellidoTXT.setBounds(256, 97, 140, 19);
 		contentPanel.add(apellidoTXT);
-		
+
 		JLabel label_apellidos = new JLabel(" Apellidos");
 		label_apellidos.setForeground(new Color(8, 6, 7));
 		label_apellidos.setFont(new Font("Roboto Medium", Font.PLAIN, 14));
 		label_apellidos.setBounds(135, 99, 82, 13);
 		contentPanel.add(label_apellidos);
-		
+
 		BotonAnimacion borrarBT = new BotonAnimacion();
 		borrarBT.setText("Borrar");
-		
+
 		borrarBT.setBounds(315, 447, 97, 23);
 		contentPanel.add(borrarBT);
-		
-		
+
+
 		BotonAnimacion btnAgregar = new BotonAnimacion();
-		btnAgregar.setText("Aceptar");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAgregar.setText("Agregar");
 		btnAgregar.setBounds(124, 445, 93, 26);
 		contentPanel.add(btnAgregar);
 
@@ -92,8 +98,16 @@ public class agregarTrabajador extends JDialog {
 		contentPanel.add(lblNewLabel_6);
 
 		JSpinner salarioBas = new JSpinner();
-		salarioBas.setBounds(256, 323, 138, 19);
+		salarioBas.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char a= e.getKeyChar();
+				if(a<'0'|| a>'9')e.consume();
+
+			}
+		});
 		
+		salarioBas.setBounds(256, 323, 138, 19);
+
 		contentPanel.add(salarioBas);
 
 		JLabel lblNewLabel_1 = new JLabel("Nombre ");
@@ -127,11 +141,28 @@ public class agregarTrabajador extends JDialog {
 		contentPanel.add(lblNewLabel_5);
 
 		nombreTXT = new JTextField();
+		nombreTXT.addKeyListener(new KeyAdapter() {//CODIGO SOLO NOMBRES (PENDINETE PARA LOS ESPACIONS)
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				if((c<'a'||c>'z' )&& (c<'A'|| c>'Z')
+						&& !(c== e.VK_BACK_SPACE))e.consume();
+					
+			}
+		});
 		nombreTXT.setBounds(256, 58, 140, 19);
 		contentPanel.add(nombreTXT);
 		nombreTXT.setColumns(10);
 
 		ciTXT = new JTextField();
+
+		ciTXT.addKeyListener(new KeyAdapter() {//CODIGO PARA SOLO ACEPTAR DIGITOS 
+			public void keyTyped(KeyEvent e) {
+				char a= e.getKeyChar();
+				if(a<'0'|| a>'9')e.consume();
+			}
+		});
+
 		ciTXT.setBounds(256, 141, 140, 19);
 		contentPanel.add(ciTXT);
 		ciTXT.setColumns(10);

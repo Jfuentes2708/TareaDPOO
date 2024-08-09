@@ -1,5 +1,9 @@
 package validaciones;
 
+import java.awt.TextField;
+
+import javax.swing.JTextField;
+
 public class Validaciones {
 	
 public static boolean validarNombre(String nombre){
@@ -47,9 +51,13 @@ public static boolean validarNombre(String nombre){
 		return validado;
 	}
 
+	public static boolean validarTxtLetras(JTextField palabra) {
+	boolean permitido=false;
+	if
 	
-	
-	
+	return permitido;
+		
+	}	
 	
 	
 	
