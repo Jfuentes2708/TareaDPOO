@@ -2,6 +2,8 @@ package init;
 
 import java.awt.EventQueue;
 
+import Inicializar.Datos;
+import logic.Tienda;
 import ui.Principal;
 
 
@@ -9,18 +11,19 @@ import ui.Principal;
  * 
  */
 public class Main {
-				public static void main(String[] args) {
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					try {
-						Principal frame = new Principal();
-						frame.setVisible(true);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+	public static void main(String[] args) {
+		//EventQueue.invokeLater(new Runnable() {
+			//public void run() {
+				try {
+					Tienda tienda= Datos.inicializa();//PENDIENTE
+					Principal frame = new Principal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-			});
-		}
+			//}
+		//});
+	}
 
 }
 

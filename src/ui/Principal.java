@@ -98,7 +98,7 @@ public class Principal extends JFrame {
 		JButton btnNewButton_1 = new JButton("X");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				System.exit(0);
 			}
 		});
 		
@@ -111,6 +111,7 @@ public class Principal extends JFrame {
 		JMenuItem agregarDisco = new JMenuItem("Disco");
 		agregarDisco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				try {
 					agregarDisco dialog = new agregarDisco();
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -118,8 +119,10 @@ public class Principal extends JFrame {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
+				
 			}
 		});
+		
 		mnNewMenu_4.add(agregarDisco);
 		
 		JMenuItem agregarProM = new JMenuItem("Producto Músical");
@@ -186,6 +189,17 @@ public class Principal extends JFrame {
 		mnNewMenu_5.add(registroProMusic);
 		
 		JMenuItem registroTrabajador = new JMenuItem("Trabajadores");
+		registroTrabajador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					mostrarTrabajadores dialog = new mostrarTrabajadores();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_5.add(registroTrabajador);
 		menuBar.add(btnNewButton_1);
 		

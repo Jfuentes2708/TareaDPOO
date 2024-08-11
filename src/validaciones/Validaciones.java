@@ -51,13 +51,7 @@ public static boolean validarNombre(String nombre){
 		return validado;
 	}
 
-	public static boolean validarTxtLetras(JTextField palabra) {
-	boolean permitido=false;
-	if
 	
-	return permitido;
-		
-	}	
 	
 	
 	
