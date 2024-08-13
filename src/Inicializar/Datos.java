@@ -2,7 +2,7 @@ package Inicializar;
 
 import logic.Trabajador;
 import logic.VideoClip;
-import ui.agregarTrabajador;
+//import ui.agregarTrabajador;
 import logic.Cancion;
 import logic.Tienda;
 
@@ -10,18 +10,17 @@ public class Datos {
 
 	public static Tienda inicializa() {
 		Tienda tienda =new Tienda("Tienda A&J","39 entre 200 y 258","78457455");
-		Trabajador t1 = new Trabajador("Alejandro", "Arce Figueroa","04073167445","00001",new Float( 3000.0),"Superior","Gerente");
-		Trabajador t2 = new Trabajador("Javier", "Fuentes Navarro", "04082885445","00002", new Float(3000.0),"Superior","Administrador");
-		Trabajador t3 = new Trabajador("Julio Cesar" ,"Gomez Martinez","65041225452","241578",new Float(3000.0),"Medio","Dependiente");
-		Trabajador t4 = new Trabajador("Roberto", "Marin Queralta","85111025635","321048", new Float(2500.0),"Superior","Dependiente");
-		Trabajador t5 = new Trabajador("Gean Carlos" ,"Arenas","88062325236","654712", new Float(8000.0),"Medio","Administrador");
-		tienda.getTrabajadores().add(t1);
-		tienda.getTrabajadores().add(t2);
-		tienda.getTrabajadores().add(t3);
-		tienda.getTrabajadores().add(t4);
-		tienda.getTrabajadores().add(t5);
+		Trabajador t1 = new Trabajador("Alejandro", "Arce Figueroa","04073167445","00001", 3000.0f,"Superior","Gerente");
+		Trabajador t2 = new Trabajador("Javier", "Fuentes Navarro", "04082885445","00002", 3000.0f,"Superior","Administrador");
+		Trabajador t3 = new Trabajador("Julio Cesar" ,"Gomez Martinez","65041225452","241578",3000.0f,"Medio","Dependiente");
+		Trabajador t4 = new Trabajador("Roberto", "Marin Queralta","85111025635","321048", 2500.0f,"Superior","Dependiente");
+		Trabajador t5 = new Trabajador("Gean Carlos" ,"Arenas","88062325236","654712",8000.0f,"Medio","Administrador");
+		tienda.agregarTrabajador(t1);
+		tienda.agregarTrabajador(t2);
+		tienda.agregarTrabajador(t3);
+		tienda.agregarTrabajador(t4);
+		tienda.agregarTrabajador(t5);
 		
-
         //Canciones
 		Cancion hotelCalifornia = new Cancion("Hotel California", "Rock", "Eagles", "6.2 MB", "Hotel California", 6.5f, 2.49f);
 		Cancion imagine = new Cancion("Imagine", "Pop", "John Lennon", "4.2 MB", "Imagine", 3.8f, 1.49f);

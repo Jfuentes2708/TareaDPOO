@@ -145,9 +145,8 @@ public class agregarTrabajador extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c=e.getKeyChar();
-				if((c<'a'||c>'z' )&& (c<'A'|| c>'Z')
-						&& (c== e.VK_BACK_SPACE))e.consume();
-					
+				if((c<'a'||c>'z' )&& (c<'A'|| c>'Z'));
+				
 			}
 		});
 		nombreTXT.setBounds(256, 58, 140, 19);
