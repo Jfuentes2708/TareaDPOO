@@ -15,11 +15,16 @@ public class Datos {
 		Trabajador t3 = new Trabajador("Julio Cesar" ,"Gomez Martinez","65041225452","241578",3000.0f,"Medio","Dependiente");
 		Trabajador t4 = new Trabajador("Roberto", "Marin Queralta","85111025635","321048", 2500.0f,"Superior","Dependiente");
 		Trabajador t5 = new Trabajador("Gean Carlos" ,"Arenas","88062325236","654712",8000.0f,"Medio","Administrador");
-		tienda.agregarTrabajador(t1);
+		/*tienda.agregarTrabajador(t1);
 		tienda.agregarTrabajador(t2);
 		tienda.agregarTrabajador(t3);
 		tienda.agregarTrabajador(t4);
-		tienda.agregarTrabajador(t5);
+		tienda.agregarTrabajador(t5);*/
+		tienda.getTrabajadores().add(t1);
+		tienda.getTrabajadores().add(t2);
+		tienda.getTrabajadores().add(t3);
+		tienda.getTrabajadores().add(t4);
+		tienda.getTrabajadores().add(t5);
 		
         //Canciones
 		Cancion hotelCalifornia = new Cancion("Hotel California", "Rock", "Eagles", "6.2 MB", "Hotel California", 6.5f, 2.49f);

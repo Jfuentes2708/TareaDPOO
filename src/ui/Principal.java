@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Inicializar.Datos;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
@@ -23,41 +26,42 @@ public class Principal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
-	private Tienda tienda; 
-	
-	public Principal() {
+	private  Tienda tienda; 
+
+	public Principal(Tienda tiendaDatos) {
+		this.tienda=tiendaDatos;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1122, 519);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 900, 500));
- setUndecorated(true);
+		setUndecorated(true);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setBounds(0, 0, 900, 500);
 		setLocationRelativeTo(null);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setForeground(new Color(255, 255, 255));
 		menuBar.setBackground(new Color(255, 255, 255));
 		menuBar.setBounds(0, 0, 900, 22);
 		contentPane.add(menuBar);
-		
+
 		JButton btnNewButton = new JButton("Lupa");
 		menuBar.add(btnNewButton);
-		
+
 		textField = new JTextField();
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setSize(30, 100);
 		menuBar.add(textField);
 		textField.setColumns(10);
-	
+
 		JMenu menuCuenta = new JMenu("Cuenta");
 		menuBar.add(menuCuenta);
-		
+
 		JMenuItem inicioSesio = new JMenuItem("Iniciar Sesión");
 		inicioSesio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				try {
 					IniciarSesion dialog = new IniciarSesion();
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -68,7 +72,7 @@ public class Principal extends JFrame {
 			}
 		});
 		menuCuenta.add(inicioSesio);
-		
+
 		JMenuItem registro = new JMenuItem("Registrar");
 		registro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -82,36 +86,36 @@ public class Principal extends JFrame {
 			}
 		});
 		menuCuenta.add(registro);
-		
+
 		JMenu menuServicios = new JMenu("Servicios");
 		menuBar.add(menuServicios);
-		
+
 		JMenuItem personalizarDisco = new JMenuItem("Personalizar Disco");
 		menuServicios.add(personalizarDisco);
-		
+
 		JMenu menuCesta = new JMenu("Cesta");
 		menuBar.add(menuCesta);
-		
+
 		JMenuItem pago = new JMenuItem("Pago");
 		menuCesta.add(pago);
-		
+
 		JButton btnNewButton_1 = new JButton("X");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		
+
 		JMenu menuOpciones = new JMenu("Opciones");
 		menuBar.add(menuOpciones);
-		
+
 		JMenu mnNewMenu_4 = new JMenu("Agregar");
 		menuOpciones.add(mnNewMenu_4);
-		
+
 		JMenuItem agregarDisco = new JMenuItem("Disco");
 		agregarDisco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				try {
 					agregarDisco dialog = new agregarDisco();
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -119,12 +123,12 @@ public class Principal extends JFrame {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				
+
 			}
 		});
-		
+
 		mnNewMenu_4.add(agregarDisco);
-		
+
 		JMenuItem agregarProM = new JMenuItem("Producto Músical");
 		agregarProM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -138,7 +142,7 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu_4.add(agregarProM);
-		
+
 		JMenuItem agregarTrabajador = new JMenuItem("Trabajador");
 		agregarTrabajador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -152,57 +156,63 @@ public class Principal extends JFrame {
 			}
 		});
 		mnNewMenu_4.add(agregarTrabajador);
-		
+
 		JMenu mnNewMenu_6 = new JMenu("Eliminar");
 		mnNewMenu_6.setEnabled(false);
 		menuOpciones.add(mnNewMenu_6);
-		
+
 		JMenuItem eliminarDisco = new JMenuItem("Disco");
 		mnNewMenu_6.add(eliminarDisco);
-		
+
 		JMenuItem eliminarProducMus = new JMenuItem("Producto Músical");
 		mnNewMenu_6.add(eliminarProducMus);
-		
+
 		JMenuItem eliminarTrabajador = new JMenuItem("Trabajador");
 		mnNewMenu_6.add(eliminarTrabajador);
-		
+
 		JMenu mnNewMenu_7 = new JMenu("Modificar");
 		mnNewMenu_7.setEnabled(false);
 		menuOpciones.add(mnNewMenu_7);
-		
+
 		JMenuItem modificarDisco = new JMenuItem("Disco");
 		mnNewMenu_7.add(modificarDisco);
-		
+
 		JMenuItem modificarProducMusi = new JMenuItem("Producto Músical");
 		mnNewMenu_7.add(modificarProducMusi);
-		
+
 		JMenuItem modificarTrabajador = new JMenuItem("Trabajador");
 		mnNewMenu_7.add(modificarTrabajador);
-		
+
 		JMenu mnNewMenu_5 = new JMenu("Registros");
 		menuOpciones.add(mnNewMenu_5);
-		
+
 		JMenuItem registroDisco = new JMenuItem("Disco");
 		mnNewMenu_5.add(registroDisco);
-		
+
 		JMenuItem registroProMusic = new JMenuItem("Producto Músical");
 		mnNewMenu_5.add(registroProMusic);
-		
+
 		JMenuItem registroTrabajador = new JMenuItem("Trabajadores");
 		registroTrabajador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					mostrarTrabajadores dialog = new mostrarTrabajadores(tienda);
+				mostrarTrabajadores dialog=null;
+				if(dialog==null) {
+					dialog=new mostrarTrabajadores(tienda);
+				}
+				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+				/*try {
+					mostrarTrabajadores dialog = new mostrarTrabajadores(tienda );//BORRE TIENDA QUE PASABA POR PARAMEETRO
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e1) {
 					e1.printStackTrace();
-				}
+				}*/
 			}
 		});
 		mnNewMenu_5.add(registroTrabajador);
 		menuBar.add(btnNewButton_1);
-		
+
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\alejandro\\Documents\\GitHub\\TareaDPOO\\src\\imagenes\\FondoPrincipal.jpg"));
 		lblNewLabel.setBounds(0, 0, 900, 500);

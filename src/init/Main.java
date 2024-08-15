@@ -10,6 +10,9 @@ import ui.Principal;
 /**
  * 
  */
+/**
+ * 
+ */
 public class Main {
 	/**
 	 * @param args
@@ -18,8 +21,8 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//Tienda tienda= Datos.inicializa();//PENDIENTE
-					Principal frame = new Principal();
+					Tienda tienda= Datos.inicializa();//PENDIENTE
+					Principal frame = new Principal(tienda);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
