@@ -3,6 +3,7 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dialog;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import componentesVisuales.BotonAnimacion;
+import logic.Tienda;
+
 import java.awt.Cursor;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
@@ -33,10 +36,11 @@ public class IniciarSesion extends JDialog {
 	private final JPanel contentPaneInicio = new JPanel();
 	private JPasswordField txtPassword;
 	private JTextField txtUsario;
-	
-	
+	private Tienda tienda;
 
-	public IniciarSesion() {
+
+	public IniciarSesion(final Tienda tiendaDatos) {
+		this.tienda=tiendaDatos;
 		setBounds(0,0, 600, 500);
 		setUndecorated(true);
 		contentPaneInicio.setBorder(new EmptyBorder(5, 5, 600, 500));
@@ -44,7 +48,7 @@ public class IniciarSesion extends JDialog {
 		contentPaneInicio.setLayout(null);
 		// setLocationByPlatform(isCursorSet());
 		setLocationRelativeTo(null);
-		
+
 		JPanel fondoIzquie = new JPanel();
 		fondoIzquie.setBackground(new Color(222, 222, 222));
 		fondoIzquie.setBounds(0, 0, 300, 500);
@@ -76,47 +80,73 @@ public class IniciarSesion extends JDialog {
 		});
 
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(22, 274, 268, 18);
+		separator_1.setBounds(22, 230, 268, 18);
 		fondoIzquie.add(separator_1);
 
 		JSeparator separator = new JSeparator();
-		separator.setBounds(22, 373, 268, 2);
+		separator.setBounds(22, 304, 268, 2);
 		fondoIzquie.add(separator);
 
 		BotonAnimacion btnmcnIniciarSesin = new BotonAnimacion();
-		btnmcnIniciarSesin.setFont(new Font("Roboto Medium", Font.BOLD, 16));
+		btnmcnIniciarSesin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						Principal frame = new Principal(tienda,IniciarSesion.this);
+						frame.setVisible(true);
+						setVisible(false);
+					}
+				});
+			}
+		});
+		btnmcnIniciarSesin.setFont(new Font("Arial", Font.BOLD, 16));
 		btnmcnIniciarSesin.setText("Aceptar");
 		btnmcnIniciarSesin.setText("Iniciar Sesión");
 		btnmcnIniciarSesin.setBounds(68, 441, 151, 35);
 		fondoIzquie.add(btnmcnIniciarSesin);
 
 		txtPassword = new JPasswordField();
-		txtPassword.setBounds(22, 354, 268, 18);
+		txtPassword.setBounds(22, 285, 268, 18);
 		fondoIzquie.add(txtPassword);
 		txtPassword.setBorder(null);
 		txtPassword.setBackground(null);
 
 		txtUsario = new JTextField();
-		txtUsario.setBounds(22, 259, 268, 13);
+		txtUsario.setBounds(22, 215, 268, 13);
 		fondoIzquie.add(txtUsario);
 		txtUsario.setColumns(10);
 		txtUsario.setBorder(null);
 		txtUsario.setBackground(null);
 
 		JLabel lblNewLabel = new JLabel("Contraseña");
-		lblNewLabel.setFont(new Font("Roboto Medium", Font.PLAIN, 16));
-		lblNewLabel.setBounds(22, 330, 89, 18);
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel.setBounds(22, 261, 89, 18);
 		fondoIzquie.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Usuario");
-		lblNewLabel_1.setFont(new Font("Roboto Medium", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(22, 231, 67, 18);
+		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel_1.setBounds(22, 187, 67, 18);
 		fondoIzquie.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Inicio de Sesión");
-		lblNewLabel_2.setFont(new Font("Roboto Medium", Font.BOLD | Font.ITALIC, 24));
+		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 24));
 		lblNewLabel_2.setBounds(53, 35, 189, 25);
 		fondoIzquie.add(lblNewLabel_2);
+
+		JLabel lblNewLabel_3 = new JLabel("    ¿Nuevo Usario?");
+		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+									Registro dialog = new Registro(IniciarSesion.this);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+					setVisible(false);
+				
+			}
+		});
+		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 13));
+		lblNewLabel_3.setBounds(68, 372, 174, 13);
+		fondoIzquie.add(lblNewLabel_3);
 
 		JLabel labelFondo = new JLabel();
 		labelFondo.setIcon(new ImageIcon("C:\\Users\\alejandro\\Documents\\GitHub\\TareaDPOO\\src\\imagenes\\FondoInicio.png"));

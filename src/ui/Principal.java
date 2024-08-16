@@ -19,16 +19,38 @@ import javax.swing.JDialog;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import logic.Tienda;
+import logic.Trabajador;
 public class Principal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
+	private IniciarSesion anterior; 
 	private  Tienda tienda; 
-
-	public Principal(Tienda tiendaDatos) {
+	private JMenuBar menuBar ;
+	private JButton btnNewButton;
+	private JMenu menuCuenta ;
+	private JMenuItem registro;
+	private JMenuItem inicioSesio;
+	private JMenu menuServicios;
+	private JMenuItem personalizarDisco;
+	private JMenu menuCesta;
+	private JMenuItem pago;
+	private JButton btnNewButton_1;
+	private JMenu menuOpciones;
+	private JMenu mnNewMenu_4;
+	private JMenuItem agregarDisco;
+	private JMenuItem agregarProM;
+	private JMenuItem agregarTrabajador;
+	private JMenu mnNewMenu_5;
+	private JMenuItem registroDisco;
+	private JMenuItem registroProMusic;
+	private JMenuItem registroTrabajador;
+	public Principal(final Tienda tiendaDatos,IniciarSesion inicio) {
+		this.anterior=inicio;
 		this.tienda=tiendaDatos;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1122, 519);
@@ -40,13 +62,13 @@ public class Principal extends JFrame {
 		setBounds(0, 0, 900, 500);
 		setLocationRelativeTo(null);
 
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		menuBar.setForeground(new Color(255, 255, 255));
 		menuBar.setBackground(new Color(255, 255, 255));
 		menuBar.setBounds(0, 0, 900, 22);
 		contentPane.add(menuBar);
 
-		JButton btnNewButton = new JButton("Lupa");
+		btnNewButton = new JButton("Lupa");
 		menuBar.add(btnNewButton);
 
 		textField = new JTextField();
@@ -55,159 +77,106 @@ public class Principal extends JFrame {
 		menuBar.add(textField);
 		textField.setColumns(10);
 
-		JMenu menuCuenta = new JMenu("Cuenta");
+		menuCuenta = new JMenu("Cuenta");
 		menuBar.add(menuCuenta);
 
-		JMenuItem inicioSesio = new JMenuItem("Iniciar Sesión");
-		inicioSesio.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				try {
-					IniciarSesion dialog = new IniciarSesion();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
-		menuCuenta.add(inicioSesio);
-
-		JMenuItem registro = new JMenuItem("Registrar");
+		registro = new JMenuItem("Registrar");
 		registro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					Registro dialog = new Registro();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
+			
 			}
 		});
 		menuCuenta.add(registro);
 
-		JMenu menuServicios = new JMenu("Servicios");
+		inicioSesio = new JMenuItem("Cerrar Sesión");
+		inicioSesio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Principal.this.anterior.setVisible(true);
+			}
+		});
+
+		menuCuenta.add(inicioSesio);
+
+		menuServicios = new JMenu("Servicios");
 		menuBar.add(menuServicios);
 
-		JMenuItem personalizarDisco = new JMenuItem("Personalizar Disco");
+		personalizarDisco = new JMenuItem("Personalizar Disco");
 		menuServicios.add(personalizarDisco);
 
-		JMenu menuCesta = new JMenu("Cesta");
+		menuCesta = new JMenu("Cesta");
 		menuBar.add(menuCesta);
 
-		JMenuItem pago = new JMenuItem("Pago");
+		pago = new JMenuItem("Pago");
 		menuCesta.add(pago);
 
-		JButton btnNewButton_1 = new JButton("X");
+		btnNewButton_1 = new JButton("X");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
 
-		JMenu menuOpciones = new JMenu("Opciones");
+		menuOpciones = new JMenu("Opciones");
 		menuBar.add(menuOpciones);
 
-		JMenu mnNewMenu_4 = new JMenu("Agregar");
+		mnNewMenu_4 = new JMenu("Agregar");
 		menuOpciones.add(mnNewMenu_4);
 
-		JMenuItem agregarDisco = new JMenuItem("Disco");
+		agregarDisco = new JMenuItem("Disco");
 		agregarDisco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				try {
-					agregarDisco dialog = new agregarDisco();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
+				agregarDisco dialog = new agregarDisco();
+				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
 
 			}
 		});
 
 		mnNewMenu_4.add(agregarDisco);
 
-		JMenuItem agregarProM = new JMenuItem("Producto Músical");
+		agregarProM = new JMenuItem("Producto Músical");
 		agregarProM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					agregarProductoMusical dialog = new agregarProductoMusical();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
+
+				agregarProductoMusical dialog = new agregarProductoMusical();
+				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+
 			}
 		});
 		mnNewMenu_4.add(agregarProM);
 
-		JMenuItem agregarTrabajador = new JMenuItem("Trabajador");
+		agregarTrabajador = new JMenuItem("Trabajador");
 		agregarTrabajador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					agregarTrabajador dialog = new agregarTrabajador();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
+
+				agregarTrabajador dialog = new agregarTrabajador(tienda);
+				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+
 			}
 		});
 		mnNewMenu_4.add(agregarTrabajador);
 
-		JMenu mnNewMenu_6 = new JMenu("Eliminar");
-		mnNewMenu_6.setEnabled(false);
-		menuOpciones.add(mnNewMenu_6);
-
-		JMenuItem eliminarDisco = new JMenuItem("Disco");
-		mnNewMenu_6.add(eliminarDisco);
-
-		JMenuItem eliminarProducMus = new JMenuItem("Producto Músical");
-		mnNewMenu_6.add(eliminarProducMus);
-
-		JMenuItem eliminarTrabajador = new JMenuItem("Trabajador");
-		mnNewMenu_6.add(eliminarTrabajador);
-
-		JMenu mnNewMenu_7 = new JMenu("Modificar");
-		mnNewMenu_7.setEnabled(false);
-		menuOpciones.add(mnNewMenu_7);
-
-		JMenuItem modificarDisco = new JMenuItem("Disco");
-		mnNewMenu_7.add(modificarDisco);
-
-		JMenuItem modificarProducMusi = new JMenuItem("Producto Músical");
-		mnNewMenu_7.add(modificarProducMusi);
-
-		JMenuItem modificarTrabajador = new JMenuItem("Trabajador");
-		mnNewMenu_7.add(modificarTrabajador);
-
-		JMenu mnNewMenu_5 = new JMenu("Registros");
+		mnNewMenu_5 = new JMenu("Registros");
 		menuOpciones.add(mnNewMenu_5);
 
-		JMenuItem registroDisco = new JMenuItem("Disco");
+		registroDisco = new JMenuItem("Disco");
 		mnNewMenu_5.add(registroDisco);
 
-		JMenuItem registroProMusic = new JMenuItem("Producto Músical");
+		registroProMusic = new JMenuItem("Producto Músical");
 		mnNewMenu_5.add(registroProMusic);
 
-		JMenuItem registroTrabajador = new JMenuItem("Trabajadores");
+		registroTrabajador = new JMenuItem("Trabajadores");
 		registroTrabajador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarTrabajadores dialog=null;
-				if(dialog==null) {
-					dialog=new mostrarTrabajadores(tienda);
-				}
+
+				mostrarTrabajadores dialog = new mostrarTrabajadores(tienda );//BORRE TIENDA QUE PASABA POR PARAMEETRO
 				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
-				/*try {
-					mostrarTrabajadores dialog = new mostrarTrabajadores(tienda );//BORRE TIENDA QUE PASABA POR PARAMEETRO
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}*/
+
 			}
 		});
 		mnNewMenu_5.add(registroTrabajador);

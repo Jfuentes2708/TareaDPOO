@@ -19,7 +19,7 @@ public class mostrarTrabajadores extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
-	private DefaultTableModel defaultTableModel = new DefaultTableModel();
+	private DefaultTableModel defaultTableModel ;
 	private  Tienda tienda;
 
 	/**
@@ -76,38 +76,29 @@ public class mostrarTrabajadores extends JDialog {
 	 * Método para actualizar la tabla con los datos de los trabajadores.
 	 */
 	public void actualizarTablaTrabajadores() {
-	//	defaultTableModel = new DefaultTableModel(); // Crea un nuevo modelo de tabla
-		defaultTableModel.addColumn("Nombre");
-		defaultTableModel.addColumn("Apellido");
-		defaultTableModel.addColumn("CI");
-		defaultTableModel.addColumn("Numero Trabajador");
-		defaultTableModel.addColumn("Salario Basico");
-		defaultTableModel.addColumn("Nivel Escolar");
-		defaultTableModel.addColumn("Cargo");
+				defaultTableModel=new DefaultTableModel();
+				defaultTableModel.addColumn("Nombre");
+				defaultTableModel.addColumn("Apellido");
+				defaultTableModel.addColumn("CI");
+				defaultTableModel.addColumn("Numero Trabajador");
+				defaultTableModel.addColumn("Salario Basico");
+				defaultTableModel.addColumn("Nivel Escolar");
+				defaultTableModel.addColumn("Cargo");
 		ArrayList<Trabajador> trabajadores= tienda.getTrabajadores();
-		for (Trabajador trabajador : trabajadores) {
+		for (int i = 0; i < trabajadores.size(); i++) {
 			defaultTableModel.addRow( new Object[]  {
-					trabajador.getNombre(),
-					trabajador.getApellidos(),
-					trabajador.getNumeroId(),
-					trabajador.getNumeroTrabajador(),
-					trabajador.getSalarioBasico(),
-					trabajador.getCargo(),
-					trabajador.getNivelEscolar()
+					trabajadores.get(i).getNombre(),
+					trabajadores.get(i).getApellidos(),
+					trabajadores.get(i).getNumeroId(),
+					trabajadores.get(i).getNumeroTrabajador(),
+					trabajadores.get(i).getSalarioBasico(),
+					trabajadores.get(i).getCargo(),
+					trabajadores.get(i).getNivelEscolar()
+
+			});
 			
-					});
 		}
-
-
-
-		// Añade dos filas con datos específicos
-		/*defaultTableModel.addRow(new Object[]{
-				"Juan", "Perez", "123456", "001", 500.0, "Universitario", "Ingeniero"
-		});
-		defaultTableModel.addRow(new Object[]{
-				"Ana", "Gomez", "654321", "002", 600.0, "Secundario", "Doctora"
-		});*/
-
-		//table.setModel(defaultTableModel); // Establece el nuevo modelo de tabla
+		
+		table.setModel(defaultTableModel);
 	}
 }

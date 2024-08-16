@@ -2,6 +2,10 @@ package logic;
 
 import java.util.ArrayList;
 
+import logic.Disco;
+import logic.ProductoMusical;
+import logic.Trabajador;
+import logic.Venta;
 import logic.Cancion;
 import logic.VideoClip;
 
@@ -9,10 +13,21 @@ public class Tienda {
 	private String nombre;
 	private String direccion;
 	private String telefono;
+	private Gerente gerente;
 	private ArrayList<Trabajador>trabajadores;
 	private ArrayList<Disco>discos;
 	private ArrayList<ProductoMusical>productos;
 
+
+	public Tienda(String nombre, String direccion, String telefono,Gerente gerente) {
+		setNombre(nombre);
+		setDireccion(direccion);
+		setTelefono(telefono);
+		setGerente(gerente);
+		trabajadores = new ArrayList<Trabajador>();
+		discos = new ArrayList<Disco>();
+		productos = new ArrayList<ProductoMusical>();
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -36,12 +51,6 @@ public class Tienda {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
-	}
-
-	public Tienda(String nombre, String direccion, String telefono) {
-		setNombre(nombre);
-		setDireccion(direccion);
-		setTelefono(telefono);
 	}
 
 	public ArrayList<Trabajador> getTrabajadores() {
@@ -68,7 +77,15 @@ public class Tienda {
 		this.productos = productos;
 	}
 
-	// FUNCIONES BUSCAR
+	public Gerente getGerente() {
+		return gerente;
+	}
+
+	public void setGerente(Gerente gerente) {
+		this.gerente = gerente;
+	}
+
+	/////////////////////// FUNCIONES BUSCAR///////////////////
 	public Trabajador buscarTrabajador(String nombre) {//Funcion para la barra de busqueda
 		Trabajador tra=null;
 		boolean encontrado=false;
@@ -156,7 +173,7 @@ public class Tienda {
 	}
 
 
-	//Agregar 
+	/////////////////////Agregar /////////////////////////
 	public boolean agregarTrabajador(Trabajador a) {//TRABAJADOR
 		boolean agregado=false;
 		if(verificarTrabajador(a.getNumeroTrabajador())==null) {
@@ -193,7 +210,7 @@ public class Tienda {
 		return agregado;
 	}
 
-	// Eliminar
+	////////////////////// Eliminar////////////////////////
 	public boolean eliminarTrabajador(Trabajador a) {//TRABAJADOR
 		boolean eliminado=false;
 		if(verificarTrabajador(a.getNumeroTrabajador())!=null) {
@@ -246,7 +263,7 @@ public class Tienda {
 		return eliminado;
 	}
 
-	//Facilitar trabajo con canciones y videos por separado
+	///////////Facilitar trabajo con canciones y videos por separado/////////////////
 
 	public ArrayList <Cancion> ListaCanciones(){
 		ArrayList <Cancion> canciones = new ArrayList<Cancion>();
@@ -267,6 +284,7 @@ public class Tienda {
 		}
 		return videos;
 	}
+
 
 
 

@@ -28,7 +28,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.LineBorder;
 
-public class Registro extends JDialog {
+public class Registro extends JFrame {
 	
 
 	private static final long serialVersionUID = 1L;
@@ -36,9 +36,10 @@ public class Registro extends JDialog {
 	private JPasswordField txtPassword;
 	private JTextField nombreTXT;
 	private JTextField usuarioTXT;
+	private IniciarSesion anterior;
 	
-	
-	public Registro() {
+	public Registro( IniciarSesion inicio) {
+		anterior=inicio;
 		setBounds(0,0, 600, 500);
 		setUndecorated(true);
 		contentPaneInicio.setBorder(new EmptyBorder(5, 5, 600, 500));
@@ -78,6 +79,7 @@ public class Registro extends JDialog {
 		cerrarBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				Registro.this.anterior.setVisible(true);
 			}
 		});
 

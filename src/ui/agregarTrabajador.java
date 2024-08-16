@@ -15,6 +15,7 @@ import javax.swing.border.TitledBorder;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -25,6 +26,9 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import componentesVisuales.BotonAnimacion;
+import logic.Tienda;
+import logic.Trabajador;
+
 import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -36,9 +40,12 @@ public class agregarTrabajador extends JDialog {
 	private JTextField nombreTXT;
 	private JTextField ciTXT;
 	private JTextField apellidoTXT;
-
-
-	public agregarTrabajador() {
+	private JComboBox<String> cargoBOX;
+	private JComboBox<String> nivelBox;
+	private JSpinner salarioBas;
+	private Tienda tien;
+	public agregarTrabajador(final Tienda tienda) {
+		tien=tienda;
 		setBounds(100, 100, 600, 500);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 600, 500);
@@ -60,36 +67,7 @@ public class agregarTrabajador extends JDialog {
 		label_apellidos.setBounds(135, 99, 82, 13);
 		contentPanel.add(label_apellidos);
 
-		BotonAnimacion borrarBT = new BotonAnimacion();
-		borrarBT.setText("Borrar");
 
-		borrarBT.setBounds(315, 447, 97, 23);
-		contentPanel.add(borrarBT);
-
-
-		BotonAnimacion btnAgregar = new BotonAnimacion();
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnAgregar.setText("Agregar");
-		btnAgregar.setBounds(124, 445, 93, 26);
-		contentPanel.add(btnAgregar);
-
-		JButton cerrarBTN = new JButton("X");
-		cerrarBTN.setForeground(new Color(8, 6, 7));
-		cerrarBTN.setBounds(0, 0, 22, 23);
-		contentPanel.add(cerrarBTN);
-		cerrarBTN.setBackground(new Color(19, 45, 109));
-		cerrarBTN.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		cerrarBTN.setBorder(null);
-		cerrarBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-		cerrarBTN.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
 
 		JLabel lblNewLabel_6 = new JLabel("Datos Trabajor");
 		lblNewLabel_6.setForeground(new Color(8, 6, 7));
@@ -97,7 +75,7 @@ public class agregarTrabajador extends JDialog {
 		lblNewLabel_6.setBounds(188, 0, 208, 35);
 		contentPanel.add(lblNewLabel_6);
 
-		JSpinner salarioBas = new JSpinner();
+		salarioBas = new JSpinner();
 		salarioBas.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
 				char a= e.getKeyChar();
@@ -105,7 +83,7 @@ public class agregarTrabajador extends JDialog {
 
 			}
 		});
-		
+
 		salarioBas.setBounds(256, 323, 138, 19);
 
 		contentPanel.add(salarioBas);
@@ -146,7 +124,7 @@ public class agregarTrabajador extends JDialog {
 			public void keyTyped(KeyEvent e) {
 				char c=e.getKeyChar();
 				if((c<'a'||c>'z' )&& (c<'A'|| c>'Z'));
-				
+
 			}
 		});
 		nombreTXT.setBounds(256, 58, 140, 19);
@@ -166,31 +144,74 @@ public class agregarTrabajador extends JDialog {
 		contentPanel.add(ciTXT);
 		ciTXT.setColumns(10);
 
-		JComboBox<String> nivelBox = new JComboBox();
+
+		nivelBox = new JComboBox<>(new DefaultComboBoxModel<>(new String[] {
+				"Tecnico Medio", "Preuniversitario", "Universitario"}));
 		nivelBox.setBounds(256, 197, 142, 21);
 		contentPanel.add(nivelBox);
-		nivelBox.setModel(new DefaultComboBoxModel<String>(new String[] {
-				"Tecnico Medio", "Preuniversitario","Universitario" }));
 
-		JComboBox<String> cargoBOX = new JComboBox();
+
+		cargoBOX = new JComboBox<>(new DefaultComboBoxModel<>(new String[] {
+				"Dependiente", "Gerente", "Asistente"}));
 		cargoBOX.setBounds(256, 264, 140, 21);
 		contentPanel.add(cargoBOX);
-		cargoBOX.setModel(new DefaultComboBoxModel<String>(new String[] {
-				"Dependiente" , "Gerente",
-		"Asistente" }));
+
+		BotonAnimacion borrarBT = new BotonAnimacion();
+		borrarBT.setText("Borrar");
+		borrarBT.setBounds(315, 447, 97, 23);
+		contentPanel.add(borrarBT);
 
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\alejandro\\Documents\\GitHub\\TareaDPOO\\src\\imagenes\\FondoAgregar.png"));
-		lblNewLabel.setBounds(0, 0, 600, 500);
-		contentPanel.add(lblNewLabel);
+		BotonAnimacion btnAgregar = new BotonAnimacion();
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombre = nombreTXT.getText();
+				String apellido = apellidoTXT.getText();
+				String ci = ciTXT.getText();
+				float salarioBasico = (float) salarioBas.getValue();
+				Trabajador nuevoTrabajador = new Trabajador(nombre, apellido, ci, "01", salarioBasico, nivelBox.getSelectedItem().toString(), cargoBOX.getSelectedItem().toString());
+				if(tienda.agregarTrabajador(nuevoTrabajador)==true) {
+					JOptionPane.showConfirmDialog(null,"Error");
+
+				}
+
+			}
+		});
+		btnAgregar.setText("Agregar");
+		btnAgregar.setBounds(124, 445, 93, 26);
+		contentPanel.add(btnAgregar);
+
+		JButton cerrarBTN = new JButton("X");
+		cerrarBTN.setForeground(new Color(8, 6, 7));
+		cerrarBTN.setBounds(0, 0, 22, 23);
+		contentPanel.add(cerrarBTN);
+		cerrarBTN.setBackground(new Color(19, 45, 109));
+		cerrarBTN.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		cerrarBTN.setBorder(null);
+		cerrarBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
+		
+				JLabel lblNewLabel = new JLabel("");
+				lblNewLabel.setIcon(new ImageIcon("C:\\Users\\alejandro\\Documents\\GitHub\\TareaDPOO\\src\\imagenes\\FondoAgregar.png"));
+				lblNewLabel.setBounds(0, 0, 600, 500);
+				contentPanel.add(lblNewLabel);
+
+		cerrarBTN.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		borrarBT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nombreTXT.setText("");
 				ciTXT.setText("");
 				apellidoTXT.setText("");
-
+				cargoBOX.setSelectedIndex(0);
+				nivelBox.setSelectedIndex(0);
 			}
 		});
+
+
+
 	}
 }
