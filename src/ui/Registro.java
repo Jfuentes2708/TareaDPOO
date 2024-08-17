@@ -94,6 +94,8 @@ public class Registro extends JFrame {
 		BotonAnimacion btnmcnRegistro = new BotonAnimacion();
 		btnmcnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Registro.this.anterior.setVisible(true);
 			}
 		});
 		 btnmcnRegistro.setFont(new Font("Roboto Medium", Font.BOLD, 16));

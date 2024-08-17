@@ -9,11 +9,11 @@ public class Datos {
 
 	public static Tienda inicializa() {
 		Tienda tienda =new Tienda("Tienda A&J","39 entre 200 y 258","78457455",null );//Arce
-		Trabajador t1 = new Trabajador("Alejandro", "Arce Figueroa","04073167445","00001", 3000.0f,"Superior","Gerente");
-		Trabajador t2 = new Trabajador("Javier", "Fuentes Navarro", "04082885445","00002", 3000.0f,"Superior","Administrador");
-		Trabajador t3 = new Trabajador("Julio Cesar" ,"Gomez Martinez","65041225452","241578",3000.0f,"Medio","Dependiente");
-		Trabajador t4 = new Trabajador("Roberto", "Marin Queralta","85111025635","321048", 2500.0f,"Superior","Dependiente");
-		Trabajador t5 = new Trabajador("Gean Carlos" ,"Arenas","88062325236","654712",8000.0f,"Medio","Administrador");
+		Trabajador t1 = new Trabajador("Alejandro", "Arce Figueroa","04073167445",00001, 3000.0f,"Superior","Gerente");
+		Trabajador t2 = new Trabajador("Javier", "Fuentes Navarro", "04082885445",00002, 3000.0f,"Superior","Administrador");
+		Trabajador t3 = new Trabajador("Julio Cesar" ,"Gomez Martinez","65041225452",241578,3000.0f,"Medio","Dependiente");
+		Trabajador t4 = new Trabajador("Roberto", "Marin Queralta","85111025635",321048, 2500.0f,"Superior","Dependiente");
+		Trabajador t5 = new Trabajador("Gean Carlos" ,"Arenas","88062325236",54712,8000.0f,"Medio","Administrador");
 		/*tienda.agregarTrabajador(t1);
 		tienda.agregarTrabajador(t2);
 		tienda.agregarTrabajador(t3);

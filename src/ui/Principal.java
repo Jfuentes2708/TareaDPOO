@@ -152,7 +152,7 @@ public class Principal extends JFrame {
 		agregarTrabajador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				agregarTrabajador dialog = new agregarTrabajador(tienda);
+				agregarTrabajador dialog = new agregarTrabajador(tienda,null);
 				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
 

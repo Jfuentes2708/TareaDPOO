@@ -15,7 +15,7 @@ public class Gerente extends Trabajador {
 
 	
 	
-	public Gerente(String nombre,String apellidos, String numeroId, String numeroTrabajador,
+	public Gerente(String nombre,String apellidos, String numeroId, int numeroTrabajador,
 			float salarioBasico, String nivelEscolar, String cargo,
 			Date fechaOcupaCargo) {
 		

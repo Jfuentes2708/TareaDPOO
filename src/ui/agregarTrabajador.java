@@ -44,8 +44,10 @@ public class agregarTrabajador extends JDialog {
 	private JComboBox<String> nivelBox;
 	private JSpinner salarioBas;
 	private Tienda tien;
-	public agregarTrabajador(final Tienda tienda) {
+	private Trabajador trabajador;
+	public agregarTrabajador(final Tienda tienda,Trabajador tra) {
 		tien=tienda;
+		trabajador=tra;
 		setBounds(100, 100, 600, 500);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 600, 500);
@@ -75,10 +77,10 @@ public class agregarTrabajador extends JDialog {
 		lblNewLabel_6.setBounds(188, 0, 208, 35);
 		contentPanel.add(lblNewLabel_6);
 
-		salarioBas = new JSpinner();
+		salarioBas = new JSpinner(new SpinnerNumberModel(0.0f, 0.0f, null, 0.1f));
 		salarioBas.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
-				char a= e.getKeyChar();
+					char a= e.getKeyChar();
 				if(a<'0'|| a>'9')e.consume();
 
 			}
@@ -165,15 +167,20 @@ public class agregarTrabajador extends JDialog {
 		BotonAnimacion btnAgregar = new BotonAnimacion();
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombre = nombreTXT.getText();
-				String apellido = apellidoTXT.getText();
-				String ci = ciTXT.getText();
+				String nombre = nombreTXT.getText().trim();
+				String apellido = apellidoTXT.getText().trim();
+				String ci = ciTXT.getText().toString();
+				int noTrabajador=(int)((Math.random()*99999)+1);
 				float salarioBasico = (float) salarioBas.getValue();
-				Trabajador nuevoTrabajador = new Trabajador(nombre, apellido, ci, "01", salarioBasico, nivelBox.getSelectedItem().toString(), cargoBOX.getSelectedItem().toString());
-				if(tienda.agregarTrabajador(nuevoTrabajador)==true) {
-					JOptionPane.showConfirmDialog(null,"Error");
-
+				Trabajador nuevoTrabajador = new Trabajador(nombre, apellido, ci, noTrabajador, 
+						salarioBasico, nivelBox.getSelectedItem().toString(), 
+						cargoBOX.getSelectedItem().toString());
+				if(trabajador==null) {
+				tien.agregarTrabajador(nuevoTrabajador);
+				
 				}
+				JOptionPane.showMessageDialog(rootPane,"Accion realizada correctamente");
+				
 
 			}
 		});
@@ -189,12 +196,12 @@ public class agregarTrabajador extends JDialog {
 		cerrarBTN.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		cerrarBTN.setBorder(null);
 		cerrarBTN.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		
-		
-				JLabel lblNewLabel = new JLabel("");
-				lblNewLabel.setIcon(new ImageIcon("C:\\Users\\alejandro\\Documents\\GitHub\\TareaDPOO\\src\\imagenes\\FondoAgregar.png"));
-				lblNewLabel.setBounds(0, 0, 600, 500);
-				contentPanel.add(lblNewLabel);
+
+
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\alejandro\\Documents\\GitHub\\TareaDPOO\\src\\imagenes\\FondoAgregar.png"));
+		lblNewLabel.setBounds(0, 0, 600, 500);
+		contentPanel.add(lblNewLabel);
 
 		cerrarBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

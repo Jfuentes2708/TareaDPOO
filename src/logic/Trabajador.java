@@ -7,7 +7,7 @@ public class Trabajador {
 	protected String nombre;
 	protected String apellidos;
 	protected String numeroId;
-	protected String numeroTrabajador;
+	protected int numeroTrabajador;
 	protected float salarioBasico;
 	protected String nivelEscolar;
 	protected String cargo;
@@ -39,12 +39,12 @@ public class Trabajador {
 	}
 	
 	
-	public String getNumeroTrabajador() {
+	public int getNumeroTrabajador() {
 		return numeroTrabajador;
 	}
 	
 	
-	public void setNumeroTrabajador(String numeroTrabajador) {
+	public void setNumeroTrabajador(int numeroTrabajador) {
 		this.numeroTrabajador = numeroTrabajador;
 	}
 	
@@ -81,7 +81,7 @@ public class Trabajador {
 
 	
 	
-	public Trabajador(String nombre,String apellidos, String numeroId, String numeroTrabajador,
+	public Trabajador(String nombre,String apellidos, String numeroId, int numeroTrabajador,
 			float salarioBasico, String nivelEscolar,
 			String cargo) {
 		

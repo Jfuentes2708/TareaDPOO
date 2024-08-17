@@ -100,13 +100,14 @@ public class Tienda {
 	//Pendiente de Crear una funcion para el apellido
 	//Pendiente funcion para buscar por CI
 
-	public Trabajador verificarTrabajador(String numeroTrabajo) {//Funcion para verificar la existencia de un trabajador 
+	public Trabajador verificarTrabajador(int numeroTrabajo) {//Funcion para verificar la existencia de un trabajador 
 		boolean verificado=false;
 		Trabajador traba=null;
 		for (int i = 0; i < trabajadores.size() && !verificado; i++) {
-			if(trabajadores.get(i).getNumeroTrabajador().equalsIgnoreCase(numeroTrabajo));
-			traba=trabajadores.get(i);
-			verificado=true;
+			if(trabajadores.get(i).getNumeroTrabajador()==numeroTrabajo) {
+				traba=trabajadores.get(i);
+				verificado=true;
+			}
 		}
 		return traba;
 	}

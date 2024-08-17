@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
@@ -25,6 +26,10 @@ import logic.Tienda;
 
 import java.awt.Cursor;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import Inicializar.Usuarios;
+import Inicializar.autenticacion;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -92,9 +97,20 @@ public class IniciarSesion extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
-						Principal frame = new Principal(tienda,IniciarSesion.this);
-						frame.setVisible(true);
-						setVisible(false);
+						String nombreUsuario= txtUsario.getText().trim();
+						String contraseña= new String (txtPassword.getPassword());
+						autenticacion auntenticar= new autenticacion();
+						Usuarios usuario= auntenticar.verificausuario(nombreUsuario, contraseña);
+						if(usuario!=null) {
+							Principal frame = new Principal(tienda,IniciarSesion.this);
+							frame.setVisible(true);
+							setVisible(false);
+							txtUsario.setText("");
+							txtPassword.setText("");
+						}else {
+							//JOptionPane.showConfirmDialog(null,"Usuario Incorrecto");
+							JOptionPane.showMessageDialog(null, "Usuario Incorrecto");
+						}
 					}
 				});
 			}
@@ -137,11 +153,11 @@ public class IniciarSesion extends JDialog {
 		lblNewLabel_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-									Registro dialog = new Registro(IniciarSesion.this);
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-					setVisible(false);
-				
+				Registro dialog = new Registro(IniciarSesion.this);
+				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+				setVisible(false);
+
 			}
 		});
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 13));
