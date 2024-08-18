@@ -49,6 +49,7 @@ public class Principal extends JFrame {
 	private JMenuItem registroDisco;
 	private JMenuItem registroProMusic;
 	private JMenuItem registroTrabajador;
+	private JMenuItem mntmNewMenuItem;
 	public Principal(final Tienda tiendaDatos,IniciarSesion inicio) {
 		this.anterior=inicio;
 		this.tienda=tiendaDatos;
@@ -83,7 +84,7 @@ public class Principal extends JFrame {
 		registro = new JMenuItem("Registrar");
 		registro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+
 			}
 		});
 		menuCuenta.add(registro);
@@ -166,19 +167,37 @@ public class Principal extends JFrame {
 		registroDisco = new JMenuItem("Disco");
 		mnNewMenu_5.add(registroDisco);
 
-		registroProMusic = new JMenuItem("Producto Músical");
+		registroProMusic = new JMenuItem("Canciones");
+		registroProMusic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarCanciones dialog1 = new mostrarCanciones(tienda);
+				dialog1.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dialog1.setVisible(true);
+
+			}
+		});
 		mnNewMenu_5.add(registroProMusic);
 
 		registroTrabajador = new JMenuItem("Trabajadores");
 		registroTrabajador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				mostrarTrabajadores dialog = new mostrarTrabajadores(tienda );//BORRE TIENDA QUE PASABA POR PARAMEETRO
+				mostrarTrabajadores dialog = new mostrarTrabajadores(tienda);
 				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
 
 			}
 		});
+
+		mntmNewMenuItem = new JMenuItem("Videos Musicales");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarVideos dialog = new mostrarVideos(tienda );
+				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+			}
+		});
+		mnNewMenu_5.add(mntmNewMenuItem);
 		mnNewMenu_5.add(registroTrabajador);
 		menuBar.add(btnNewButton_1);
 

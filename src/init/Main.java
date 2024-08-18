@@ -8,16 +8,8 @@ import logic.Tienda;
 import ui.IniciarSesion;
 
 
-/**
- * 
- */
-/**
- * 
- */
 public class Main {
-	/**
-	 * @param args
-	 */
+	
 	public static void main(String[] args) {
 		try {
 			Tienda tienda=Datos.inicializa();

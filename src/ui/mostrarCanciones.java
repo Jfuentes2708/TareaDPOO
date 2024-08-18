@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import logic.Cancion;
 import logic.Tienda;
-import logic.Trabajador;
+
 
 public class mostrarCanciones extends JDialog {
 
@@ -43,7 +43,7 @@ public class mostrarCanciones extends JDialog {
 		table.setModel(new DefaultTableModel(
 				new Object[][] {},
 				new String[] {
-						"Titulo", "Genero", "Interprete", "Album", "Duracion", "Precio", "Tamaño"
+						"Titulo", "Genero", "Interprete", "Album", "Duracion", "Precio", "Tamaï¿½o"
 
 				}
 
@@ -79,7 +79,7 @@ public class mostrarCanciones extends JDialog {
 				defaultTableModel.addColumn("Album");
 				defaultTableModel.addColumn("Duracion");
 				defaultTableModel.addColumn("Precio");
-				defaultTableModel.addColumn("Tamaño");
+				defaultTableModel.addColumn("Tamaï¿½o");
 		ArrayList<Cancion> canciones= tienda.ListaCanciones();
 		for (int i = 0; i < canciones.size(); i++) {
 			defaultTableModel.addRow( new Object[]  {

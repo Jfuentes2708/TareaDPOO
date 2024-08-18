@@ -25,9 +25,7 @@ public class mostrarTrabajadores extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		// El método main se puede usar para pruebas
-	}
+	
 
 	public mostrarTrabajadores(Tienda tienda) {//BORRE TINEDA QUE PASABA PPR PAARAMETRO
 		this.tienda=tienda;
