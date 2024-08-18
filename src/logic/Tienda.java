@@ -285,6 +285,15 @@ public class Tienda {
 		}
 		return videos;
 	}
+	public ArrayList<DiscoPersonalizado> ListDiscosP (){
+		ArrayList <DiscoPersonalizado> discos = new ArrayList<DiscoPersonalizado>();
+		for(int i=0; i < discos.size(); i++){
+			if(discos.get(i) instanceof DiscoPersonalizado){
+				discos.add((DiscoPersonalizado)discos.get(i));
+			}
+		}
+		return discos;
+	}
 
 
 
