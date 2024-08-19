@@ -28,6 +28,8 @@ import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerNumberModel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class agregarDisco extends JDialog {
 
@@ -62,6 +64,7 @@ public class agregarDisco extends JDialog {
 				Disco discos=new Disco(soporteBox.getSelectedItem().toString(),nombreDisco,interprete,precioDisco);
 				if(disco==null) {
 					tienda.agregarDisco(discos);
+					//tienda.getDiscos().add(discos);
 					JOptionPane.showMessageDialog(rootPane,"Accion realizada correctamente");
 				}
 			}
@@ -131,11 +134,21 @@ public class agregarDisco extends JDialog {
 		contentPanel.add(lblNewLabel_1_2_1);
 
 		nombreTXT = new JTextField();
+		nombreTXT.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				nombreTXT.setText("");
+			}
+		});
+		nombreTXT.setFont(new Font("Arial", Font.BOLD, 7));
+		nombreTXT.setText("Solo Caracteres");
 		nombreTXT.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c=e.getKeyChar();
-				if((c<'a'||c>'z' )&& (c<'A'|| c>'Z'))e.consume();;
+				 if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+	                    e.consume(); // Ignore 
+				}
 
 			}
 		});
