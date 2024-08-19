@@ -5,13 +5,17 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Font;
-
+import validaciones.Validaciones;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import componentesVisuales.BotonAnimacion;
+import logic.Disco;
+import logic.Tienda;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,6 +26,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerNumberModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class agregarDisco extends JDialog {
 
@@ -29,10 +35,14 @@ public class agregarDisco extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField nombreTXT;
 	private JTextField interpreteTXT;
+	private JComboBox <String>soporteBox;
+	private JSpinner spinner;
+	private Tienda tienda;
+	private Disco disco;
 
-
-
-	public agregarDisco() {
+	public agregarDisco(final Tienda t,Disco dis) {
+		tienda=t;
+		disco=dis;
 		setTitle("Datos Discos");
 		setBounds(100, 100, 560, 371);
 		getContentPane().setLayout(new BorderLayout());
@@ -46,6 +56,14 @@ public class agregarDisco extends JDialog {
 		btnmcnAgregar.setText("Agregar");
 		btnmcnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String interprete=interpreteTXT.getText().trim();
+				String nombreDisco=nombreTXT.getText().trim();
+				float precioDisco=(float)spinner.getValue();
+				Disco discos=new Disco(soporteBox.getSelectedItem().toString(),nombreDisco,interprete,precioDisco);
+				if(disco==null) {
+					tienda.agregarDisco(discos);
+					JOptionPane.showMessageDialog(rootPane,"Accion realizada correctamente");
+				}
 			}
 		});
 
@@ -64,13 +82,20 @@ public class agregarDisco extends JDialog {
 		cerrarBTN.setBounds(0, 0, 44, 21);
 		contentPanel.add(cerrarBTN);
 
-		JSpinner spinner = new JSpinner();
+		spinner = new JSpinner();
 		spinner.setModel(new SpinnerNumberModel(Float.valueOf(0), Float.valueOf(0), null, Float.valueOf(1)));
 		spinner.setBounds(254, 211, 128, 20);
 		contentPanel.add(spinner);
+		spinner.addKeyListener(new KeyAdapter() {//CODIGO PARA SOLO ACEPTAR DIGITOS 
+			public void keyTyped(KeyEvent e) {
+				char a= e.getKeyChar();
+				if(!Character.isDigit(a)) {
+					e.consume();
+				}
+			}
+		});
 
-		final JComboBox <String>soporteBox = new JComboBox();
-		soporteBox.setModel(new DefaultComboBoxModel<String>(new String[] {"CD", "DVD"}));
+		soporteBox = new JComboBox<>(new DefaultComboBoxModel<>(new String[] {"CD", "DVD"}));
 		soporteBox.setBounds(262, 157, 120, 21);
 		contentPanel.add(soporteBox);
 
@@ -82,7 +107,7 @@ public class agregarDisco extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				nombreTXT.setText("");
 				interpreteTXT.setText("");
-soporteBox.setSelectedIndex(0);
+				soporteBox.setSelectedIndex(0);
 			}
 		});
 		btnmcnBorrar.setText("Borrar");
@@ -106,6 +131,14 @@ soporteBox.setSelectedIndex(0);
 		contentPanel.add(lblNewLabel_1_2_1);
 
 		nombreTXT = new JTextField();
+		nombreTXT.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				if((c<'a'||c>'z' )&& (c<'A'|| c>'Z'))e.consume();;
+
+			}
+		});
 		nombreTXT.setColumns(10);
 		nombreTXT.setBounds(262, 44, 120, 19);
 		contentPanel.add(nombreTXT);
@@ -114,6 +147,14 @@ soporteBox.setSelectedIndex(0);
 		interpreteTXT.setColumns(10);
 		interpreteTXT.setBounds(262, 99, 120, 19);
 		contentPanel.add(interpreteTXT);
+		interpreteTXT.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				if((c<'a'||c>'z' )&& (c<'A'|| c>'Z'))e.consume();;
+
+			}
+		});
 
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\alejandro\\Documents\\GitHub\\TareaDPOO\\src\\imagenes\\FondoAgregar.png"));

@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import logic.DiscoPersonalizado;
 import logic.Tienda;
 import logic.VideoClip;
-
-public class mostrarDiscosPersonalizados extends JDialog {
+import logic.Disco;
+public class mostrarDiscos extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
@@ -24,8 +24,8 @@ public class mostrarDiscosPersonalizados extends JDialog {
 	private DefaultTableModel defaultTableModel ;
 	private  Tienda tienda;
 
-	
-	public mostrarDiscosPersonalizados(Tienda tienda) {
+
+	public mostrarDiscos(Tienda tienda) {
 		this.tienda=tienda;
 		setBounds(100, 100, 585, 444); // Establece el tamaño y posición del diálogo
 		getContentPane().setLayout(new BorderLayout()); // Establece el layout del contenido
@@ -43,8 +43,7 @@ public class mostrarDiscosPersonalizados extends JDialog {
 		table.setModel(new DefaultTableModel(
 				new Object[][] {},
 				new String[] {
-						"Nombre", "Interprete", "Soporte", "Precio", "Tama�o", "Cantidad de Datos"
-
+						"Nombre", "Interprete", "Soporte", "Precio", 
 				}
 
 				));
@@ -72,28 +71,24 @@ public class mostrarDiscosPersonalizados extends JDialog {
 	 * Método para actualizar la tabla con los datos de los discos P
 	 */
 	public void actualizarDiscosP() {
-				defaultTableModel=new DefaultTableModel();
-				defaultTableModel.addColumn("Nombre");
-				defaultTableModel.addColumn("Interprete");
-				defaultTableModel.addColumn("Soporte");
-				defaultTableModel.addColumn("Precio");
-				defaultTableModel.addColumn("Tama�o");
-				defaultTableModel.addColumn("Cantidad de Datos");
-		ArrayList<DiscoPersonalizado> discos = tienda.ListDiscosP();
+		defaultTableModel=new DefaultTableModel();
+		defaultTableModel.addColumn("Nombre Disco");
+		defaultTableModel.addColumn("Interprete");
+		defaultTableModel.addColumn("Soporte");
+		defaultTableModel.addColumn("Precio");
+
+		ArrayList<Disco> discos = tienda.getDiscos();
 		for (int i = 0; i < discos.size(); i++) {
-			
 			defaultTableModel.addRow( new Object[]  {
 					discos.get(i).getNombreDisco(),
 					discos.get(i).getInterprete(),
 					discos.get(i).getTipoSoporte(),
-					discos.get(i).calacularPrecio(),
-					discos.get(i).getTamano(),
-					discos.get(i).getCantidadDatosGrabados(),
+					discos.get(i).getPrecio()
 
 			});
-			
+
 		}
-		
+
 		table.setModel(defaultTableModel);
 	}
 }

@@ -2,6 +2,8 @@ package Inicializar;
 
 import logic.Trabajador;
 import logic.VideoClip;
+import logic.Disco;
+import logic.DiscoPersonalizado;
 import logic.Cancion;
 import logic.Tienda;
 
@@ -14,11 +16,7 @@ public class Datos {
 		Trabajador t3 = new Trabajador("Julio Cesar" ,"Gomez Martinez","65041225452",241578,3000.0f,"Medio","Dependiente");
 		Trabajador t4 = new Trabajador("Roberto", "Marin Queralta","85111025635",321048, 2500.0f,"Superior","Dependiente");
 		Trabajador t5 = new Trabajador("Gean Carlos" ,"Arenas","88062325236",54712,8000.0f,"Medio","Administrador");
-		/*tienda.agregarTrabajador(t1);
-		tienda.agregarTrabajador(t2);
-		tienda.agregarTrabajador(t3);
-		tienda.agregarTrabajador(t4);
-		tienda.agregarTrabajador(t5);*/
+
 		tienda.getTrabajadores().add(t1);
 		tienda.getTrabajadores().add(t2);
 		tienda.getTrabajadores().add(t3);
@@ -51,8 +49,25 @@ public class Datos {
 		tienda.getProductos().add(barrioVibes);
 		tienda.getProductos().add(suburbioNights);
 
-		//Disco Personalizado Pendiente
 
+		//Disco//
+				Disco discoOriginal1 = new Disco("DVD","Esperando por ti","Veronica Labrada",30);
+				Disco discoOriginal2 = new Disco("DVD","Estoy Solito", "Juan",55);
+				Disco discoOriginal3 = new Disco("CD","Si", "Veronica Labrada",30);
+		        Disco discoOriginal4 = new Disco("CD","Loo niego Todo","Joaquin Sabina",20);
+				tienda.getDiscos().add(discoOriginal1);
+				tienda.getDiscos().add(discoOriginal2);
+				tienda.getDiscos().add(discoOriginal3);
+				tienda.getDiscos().add(discoOriginal4);
+		//Disco Personalizado Pendiente
+				DiscoPersonalizado dp1= new DiscoPersonalizado(2.0f,  50.0f, 3, "Pepe", "Juan","CD",43f);
+				DiscoPersonalizado dp2= new DiscoPersonalizado(2.5f,  53.0f, 2, "Achu", "Cha","DVD",40f);
+				DiscoPersonalizado dp3= new DiscoPersonalizado(5.0f,  55.0f, 3, "Yra", "TRe","CD",20f);
+				DiscoPersonalizado dp4= new DiscoPersonalizado(4.0f,  100.0f, 5, "Rea", "Rea","DVD",90f);
+				tienda.getDiscos().add(dp1);
+				tienda.getDiscos().add(dp2);
+				tienda.getDiscos().add(dp3);
+				tienda.getDiscos().add(dp4);
 
 
 		return tienda;

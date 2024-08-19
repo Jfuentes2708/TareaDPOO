@@ -125,7 +125,7 @@ public class agregarTrabajador extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c=e.getKeyChar();
-				if((c<'a'||c>'z' )&& (c<'A'|| c>'Z'));
+				if((c<'a'||c>'z' )&& (c<'A'|| c>'Z'))e.consume();;
 
 			}
 		});

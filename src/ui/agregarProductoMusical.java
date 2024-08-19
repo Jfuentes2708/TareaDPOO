@@ -30,8 +30,12 @@ public class agregarProductoMusical extends JDialog {
 	private JTextField interpreteTXT;
 	private JTextField colaboradorTXT;
 	private JTextField albumTXT;
-
-
+	private JComboBox<String> productoCBX;
+	private JComboBox<String> generoBox;
+	private JComboBox <String>resolucionCBX ;
+	private JSpinner tamFicheroSpi;
+	private JSpinner precioSpi;
+	private JSpinner duracionSpi;
 	public agregarProductoMusical() {
 		setBounds(100, 100, 600, 500);
 		getContentPane().setLayout(new BorderLayout());
@@ -40,8 +44,8 @@ public class agregarProductoMusical extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		setUndecorated(true);
-	setLocationRelativeTo(null);
-	
+		setLocationRelativeTo(null);
+
 		JButton cerrarBTN = new JButton("X");
 		cerrarBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -72,8 +76,7 @@ public class agregarProductoMusical extends JDialog {
 			lblNewLabel_10.setBounds(219, 20, 63, 13);
 			Otros.add(lblNewLabel_10);
 			{
-				JComboBox resolucionCBX = new JComboBox();
-				resolucionCBX.setModel(new DefaultComboBoxModel(new String[] {"360p", "480p", "720P", "1080P"}));
+				resolucionCBX = new JComboBox<>((new DefaultComboBoxModel<>(new String[] {"360p", "480p", "720P", "1080P"})));
 				resolucionCBX.setBounds(10, 36, 63, 21);
 				Otros.add(resolucionCBX);
 			}
@@ -93,6 +96,13 @@ public class agregarProductoMusical extends JDialog {
 		BotonAnimacion btnmcnBorrar = new BotonAnimacion();
 		btnmcnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				albumTXT.setText("");
+				colaboradorTXT.setText("");
+				tituloTXT.setText("");
+				interpreteTXT.setText("");
+				resolucionCBX.setSelectedIndex(0);
+				productoCBX.setSelectedIndex(0);
+				generoBox.setSelectedIndex(0);
 			}
 		});
 		btnmcnBorrar.setText("Borrar");
@@ -157,31 +167,33 @@ public class agregarProductoMusical extends JDialog {
 			contentPanel.add(colaboradorTXT);
 		}
 		{
-			JSpinner tamFicheroSpi = new JSpinner();
+			tamFicheroSpi = new JSpinner();
 			tamFicheroSpi.setBounds(410, 195, 84, 20);
 			contentPanel.add(tamFicheroSpi);
 		}
 		{
-			JSpinner precioSpi = new JSpinner();
+			precioSpi = new JSpinner();
 			precioSpi.setBounds(131, 245, 84, 20);
 			contentPanel.add(precioSpi);
 		}
 		{
-			JSpinner duracionSpi = new JSpinner();
+
+			duracionSpi = new JSpinner();
 			duracionSpi.setBounds(131, 195, 84, 20);
 			contentPanel.add(duracionSpi);
 		}
 		{
-			JComboBox productoCBX = new JComboBox();
-			productoCBX.setModel(new DefaultComboBoxModel(new String[] {"Canción", "Video Clip"}));
+			productoCBX = new JComboBox<>(new DefaultComboBoxModel<>(new String[]
+					{"Canción", "Video Clip"}));
 			productoCBX.setBounds(410, 35, 108, 21);
 			contentPanel.add(productoCBX);
 		}
 		{
-			JComboBox comboBox = new JComboBox();
-			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Pop", "Trap", "Bachata", "Regueton", "Salsa"}));
-			comboBox.setBounds(410, 110, 108, 21);
-			contentPanel.add(comboBox);
+			generoBox= new JComboBox<>(new DefaultComboBoxModel<>(new String[]
+					{"Pop", "Trap", "Bachata", "Regueton", "Salsa"}));
+
+			generoBox.setBounds(410, 110, 108, 21);
+			contentPanel.add(generoBox);
 		}
 		{
 			JLabel lblNewLabel = new JLabel("");

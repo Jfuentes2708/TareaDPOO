@@ -34,6 +34,8 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class IniciarSesion extends JDialog {
 
@@ -102,7 +104,7 @@ public class IniciarSesion extends JDialog {
 						autenticacion auntenticar= new autenticacion();
 						Usuarios usuario= auntenticar.verificausuario(nombreUsuario, contraseña);
 						if(usuario!=null) {
-							Principal frame = new Principal(tienda,IniciarSesion.this);
+							Principal frame = new Principal(tienda,IniciarSesion.this,usuario );
 							frame.setVisible(true);
 							setVisible(false);
 							txtUsario.setText("");
@@ -121,13 +123,13 @@ public class IniciarSesion extends JDialog {
 		btnmcnIniciarSesin.setBounds(68, 441, 151, 35);
 		fondoIzquie.add(btnmcnIniciarSesin);
 
-		txtPassword = new JPasswordField();
+		txtPassword = new JPasswordField("1");
 		txtPassword.setBounds(22, 285, 268, 18);
 		fondoIzquie.add(txtPassword);
 		txtPassword.setBorder(null);
 		txtPassword.setBackground(null);
 
-		txtUsario = new JTextField();
+		txtUsario = new JTextField("Gerente");
 		txtUsario.setBounds(22, 215, 268, 13);
 		fondoIzquie.add(txtUsario);
 		txtUsario.setColumns(10);
@@ -149,7 +151,7 @@ public class IniciarSesion extends JDialog {
 		lblNewLabel_2.setBounds(53, 35, 189, 25);
 		fondoIzquie.add(lblNewLabel_2);
 
-		JLabel lblNewLabel_3 = new JLabel("    ¿Nuevo Usario?");
+		JLabel lblNewLabel_3 = new JLabel("    Registrarse");
 		lblNewLabel_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -161,8 +163,21 @@ public class IniciarSesion extends JDialog {
 			}
 		});
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 13));
-		lblNewLabel_3.setBounds(68, 372, 174, 13);
+		lblNewLabel_3.setBounds(22, 394, 117, 13);
 		fondoIzquie.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Entrar como Visitante");
+		lblNewLabel_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Principal frame = new Principal(tienda,IniciarSesion.this, null);
+				frame.setVisible(true);
+				setVisible(false);
+			}
+		});
+		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_4.setBounds(22, 347, 208, 13);
+		fondoIzquie.add(lblNewLabel_4);
 
 		JLabel labelFondo = new JLabel();
 		labelFondo.setIcon(new ImageIcon("C:\\Users\\alejandro\\Documents\\GitHub\\TareaDPOO\\src\\imagenes\\FondoInicio.png"));
