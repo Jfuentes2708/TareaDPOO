@@ -89,6 +89,11 @@ public class agregarProductoMusical extends JDialog {
 		}
 
 		BotonAnimacion btnmcnAgregar = new BotonAnimacion();
+		btnmcnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//CODIGO PARA AGREGAR
+			}
+		});
 		btnmcnAgregar.setText("Agregar");
 		btnmcnAgregar.setBounds(97, 445, 66, 21);
 		contentPanel.add(btnmcnAgregar);

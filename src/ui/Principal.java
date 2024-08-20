@@ -20,6 +20,7 @@ import javax.swing.JDialog;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import logic.Tienda;
@@ -35,7 +36,7 @@ public class Principal extends JFrame {
 	private JButton btnNewButton;
 	private JMenu menuCuenta ;
 	private JMenuItem registro;
-	private JMenuItem inicioSesio;
+	private JMenuItem cerrarSesion;
 	private JMenu menuServicios;
 	private JMenuItem personalizarDisco;
 	private JMenu menuCesta;
@@ -93,15 +94,15 @@ public class Principal extends JFrame {
 		});
 		menuCuenta.add(registro);
 
-		inicioSesio = new JMenuItem("Cerrar Sesión");
-		inicioSesio.addActionListener(new ActionListener() {
+		cerrarSesion = new JMenuItem("Cerrar Sesión");
+		cerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				Principal.this.anterior.setVisible(true);
 			}
 		});
 
-		menuCuenta.add(inicioSesio);
+		menuCuenta.add(cerrarSesion);
 
 		menuServicios = new JMenu("Servicios");
 		menuBar.add(menuServicios);
@@ -110,12 +111,12 @@ public class Principal extends JFrame {
 		menuServicios.add(personalizarDisco);
 
 		menuCesta = new JMenu("Cesta");//PARA LA VALIDACION DE LOS USUARIOS
-		if(usuario==null) {
+		/*if(usuario==null) {
 			menuCesta.setVisible(false);
 		}else {
 			menuCesta.setVisible(usuario.isAgregar());
-		}
-			
+		}*/
+
 		menuBar.add(menuCesta);
 
 		pago = new JMenuItem("Pago");
@@ -133,13 +134,13 @@ public class Principal extends JFrame {
 
 		mnNewMenu_5 = new JMenu("Registros");
 		menuOpciones.add(mnNewMenu_5);
-
+		menuOpciones.setVisible(true);
 		registroDisco = new JMenuItem("Disco");
 		registroDisco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostrarDiscos dialog1 = new mostrarDiscos(tienda);
 				dialog1.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-				dialog1.setVisible(usuario.isMostrarDisco());
+				dialog1.setVisible(true);
 
 
 			}
@@ -188,26 +189,20 @@ public class Principal extends JFrame {
 		});
 		mnNewMenu_5.add(mntmNewMenuItem);
 		mnNewMenu_5.add(registroTrabajador);
-
 		agregarMenu = new JMenu("Agregar");
-		if(usuario==null) {
-			agregarMenu.setVisible(false);
-		}else {
-			agregarMenu.setVisible(usuario.isAgregar());
-		}
-				menuOpciones.add(agregarMenu);
-
-
+		agregarMenu.setVisible(true);
+		menuOpciones.add(agregarMenu);
 		agregarDisco = new JMenuItem("Disco");
 		agregarDisco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				agregarDisco dialog = new agregarDisco(tienda,null);
 				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-				dialog.setVisible(usuario.isAgregar());
+				dialog.setVisible(true);
 
 			}
 		});
+
+
 
 		agregarMenu.add(agregarDisco);
 
@@ -241,4 +236,17 @@ public class Principal extends JFrame {
 		lblNewLabel.setBounds(0, 0, 900, 500);
 		contentPane.add(lblNewLabel);
 	}
+	/*public void accesoPantañas(){
+		if(usuario==null) {
+			cerrarSesion.setVisible(false);
+			personalizarDisco.setEnabled(false);
+			pago.setEnabled(false);
+			agregarMenu.setVisible(false);
+			registro.setVisible(false);;
+		}else {
+			registro.setVisible(usuario);
+
+		}*/
+
+	//	}
 }

@@ -30,7 +30,7 @@ public class DiscoPersonalizado extends Disco {
 		this.tamano = tamano;
 	}
 	public DiscoPersonalizado(float precioBase, float tamano, int cantidadDatosGrabados,
-			String nombreDisco,String interprete,String tipoSoporte,float precio ) {
+			String nombreDisco,String interprete,String tipoSoporte,float precio) {
 		super(tipoSoporte,nombreDisco,interprete,precio);
 		this.precioBase = precioBase;
 		this.tamano = tamano;
