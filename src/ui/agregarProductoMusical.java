@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import componentesVisuales.BotonAnimacion;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
@@ -92,6 +94,23 @@ public class agregarProductoMusical extends JDialog {
 		btnmcnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//CODIGO PARA AGREGAR
+				
+				/*salarioBas.addKeyListener(new KeyAdapter() { PARA PONER EN LOS TEXTFILE Q  SEAN NUMEROS
+					public void keyTyped(KeyEvent e) {
+							char a= e.getKeyChar();
+						if(a<'0'|| a>'9')e.consume();
+
+					}
+				});*/
+				
+			/*	nombreTXT.addKeyListener(new KeyAdapter() {//CODIGO SOLO NOMBRES (PENDINETE PARA LOS ESPACIONS)
+					@Override
+					public void keyTyped(KeyEvent e) {
+						char c=e.getKeyChar();
+						if((c<'a'||c>'z' )&& (c<'A'|| c>'Z'))e.consume();;
+
+					}
+				});*/
 			}
 		});
 		btnmcnAgregar.setText("Agregar");
