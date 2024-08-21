@@ -172,6 +172,7 @@ public class agregarTrabajador extends JDialog {
 				String ci = ciTXT.getText().toString();
 				int noTrabajador=(int)((Math.random()*99999)+1);
 				float salarioBasico = (float) salarioBas.getValue();
+			//LAS VALIDACIONES VAN DE AQUI PARA ARRIBA Y EN EL ULTIMO IF ES QUE VA DE AQUI PARA ABAJO
 				Trabajador nuevoTrabajador = new Trabajador(nombre, apellido, ci, noTrabajador, 
 						salarioBasico, nivelBox.getSelectedItem().toString(), 
 						cargoBOX.getSelectedItem().toString());
